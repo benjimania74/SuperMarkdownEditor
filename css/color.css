@@ -1,0 +1,9 @@
+:root {
+    --main: #9146ff;
+    --mainHeader:#535353;
+    --mainFooter:#363736;
+    --secondary: #d3d3d3;
+    --secondary100:#969696;
+    --tertiary: #3e18af;
+    --accent: rgba(207, 207, 207, 0.9);
+}
