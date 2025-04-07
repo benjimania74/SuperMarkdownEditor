@@ -87,8 +87,6 @@
     visibility: visible;
 }
 
-
-
 .user-actions button {
     background-color: var(--mainHeader);
     color: var(--secondary);
@@ -125,13 +123,10 @@ footer {
     flex-wrap: wrap;
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0;
 }
 
 .footer-logo {
     flex: 0 0 auto;
-    margin-right: 20px; 
     align-self: flex-start;
 }
 
@@ -142,14 +137,12 @@ footer {
 }
 
 .footer-info p {
-    margin: 5px 0;
     font-size: 0.9em;
 }
 
 .footer-links {
     display: flex;
     gap: 15px;
-    margin-top: 10px;
 }
 
 .footer-links a {
