@@ -12,7 +12,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="MyWebSite" />
     <link rel="manifest" href="../img/favicon/site.webmanifest" />
+    <script src="../js/front/front.js"></script>
 </head>
+
 <div class="header-container">
     <div class="logo">
         <a href="index.html">
@@ -21,9 +23,24 @@
     </div>
     <nav class="navigation">
         <ul>
-            <li><a href="projects.html">Mes Projets</a></li>
-            <li><a href="editor.html">Éditeur</a></li>
-            <li><a href="about.html">À propos</a></li>
+            <li><a href="projects.html">Mes Projets</a>
+                <ul class="dropdown">
+                    <li><a href="new-project.html">Nouveau Projet</a></li>
+                    <li><a href="manage-projects.html">Gérer les Projets</a></li>
+                </ul>
+            </li>
+            <li><a href="editor.html">Éditeur</a>
+                <ul class="dropdown">
+                    <li><a href="markdown-guide.html">Guide Markdown</a></li>
+                    <li><a href="templates.html">Modèles</a></li>
+                </ul>
+            </li>
+            <li><a href="about.html">À propos</a>
+                <ul class="dropdown">
+                    <li><a href="team.html">Notre Équipe</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
     <div class="user-actions">
@@ -31,4 +48,6 @@
         <button id="login-button">Se connecter</button>
     </div>
 </div>
+
+
 </html>
