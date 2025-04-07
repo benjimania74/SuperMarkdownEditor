@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,15 +14,27 @@
     <link rel="manifest" href="./img/favicon/site.webmanifest" />
     <script src="./js/front/front.js"></script>
 </head>
-<?php  
-include("html/header.html");
-?>
+
 <body>
     <?php
-    include("php/pages/editor.php");
+    include("html/header.html");
+    ?>
+    <?php
+    $page = isset($_GET['page']) && $_GET['page'] != "" ? $_GET['page'] : 'index';
+
+    $filepath = "php/pages/" . $page . ".php";
+    
+    if (file_exists($filepath)) {
+        include($filepath);
+    } else {
+        include("php/pages/404.php");
+        echo("lol2");
+    }
+    ?>
+    <?php
+    include("html/footer.html");
     ?>
 </body>
-<?php
-include("html/footer.html");
-?>
+
+
 </html>

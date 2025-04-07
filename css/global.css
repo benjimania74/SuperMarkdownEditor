@@ -1,16 +1,25 @@
 @import url('./color.css');
 @import url('./font.css');
 
-
+/* body style */
+body{
+    height: 100%;
+    background-color: var(--main);
+    color: var(--secondary);
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
 /* header style */
 
-.header-container {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 10px;
     background-color: var(--mainHeader);
     color: var(--secondary);
+    margin-bottom: 10px;
 }
 
 .logo img {
@@ -51,8 +60,7 @@
 
 .navigation a:hover {
     display : block;
-    background-color: var(--tertiary);
-    color: var(--mainHeader);
+    background-color: var(--tertiary);;
     border-radius: 4px; 
     transition: background-color 0.5s ease, color 0.5s ease;
 }
@@ -87,7 +95,8 @@
     visibility: visible;
 }
 
-.user-actions button {
+.user-actions .button {
+    text-decoration: none;
     background-color: var(--mainHeader);
     color: var(--secondary);
     border: none;
@@ -97,10 +106,9 @@
     border-radius: 4px;
 }
 
-.user-actions button:hover {
+.user-actions .button:hover {
     background-color: var(--tertiary);
 }
-
 
 /* footer style */
 
@@ -114,6 +122,7 @@ footer {
     align-items: center;
     flex-wrap: wrap;
     text-align: center;
+    bottom: 0;
 }
 
 .footer-container {
@@ -154,4 +163,30 @@ footer {
 
 .footer-links a:hover {
     color: var(--tertiary);
+}
+
+
+
+/* Ajout pour le sticky footer */
+html, body {
+    height: 100%; /* Permet de remplir toute la hauteur de la page */
+    display: flex;
+    flex-direction: column;
+    margin: 0; /* Supprime les marges par défaut */
+}
+
+main {
+    flex: 1; /* Prend tout l'espace disponible entre le header et le footer */
+}
+
+footer {
+    background-color: var(--mainFooter); 
+    color: var(--secondary);
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-top: auto; /* Assure que le footer reste en bas */
 }
