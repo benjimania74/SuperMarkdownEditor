@@ -1,0 +1,1 @@
+[![wakatime](https://wakatime.com/badge/github/benjimania74/SuperMarkdownEditor.svg)](https://wakatime.com/badge/github/benjimania74/SuperMarkdownEditor)
