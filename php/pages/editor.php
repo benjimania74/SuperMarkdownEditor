@@ -3,9 +3,12 @@
     <script src="js/front/editor.js" defer></script>
 </head>
 <div id="editorContainer">
-    <textarea id="inputUser" placeholder="Écrivez ici votre texte en Markdown..."></textarea>
+    <div id="inputcontainer">
+        <textarea id="inputUser" placeholder="Écrivez ici votre texte en Markdown..."></textarea>
+    </div>
+    <div class="resizer" classe="resizer"></div>
     <div id="outputMarkdown">
 
     </div>
 </div>
-<button id="convertButton">Convertir</button>        
+<button id="convertButton">Convertir</button>

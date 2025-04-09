@@ -20,7 +20,7 @@
     include("html/header.html");
     ?>
     <?php
-    $page = isset($_GET['page']) && $_GET['page'] != "" ? $_GET['page'] : 'index';
+    $page = isset($_GET['page']) && $_GET['page'] != "" ? basename($_GET['page']) : 'index';
 
     $filepath = "php/pages/" . $page . ".php";
     
@@ -28,7 +28,6 @@
         include($filepath);
     } else {
         include("php/pages/404.php");
-        echo("lol2");
     }
     ?>
     <?php

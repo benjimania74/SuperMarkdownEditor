@@ -47,6 +47,7 @@ header {
 
 .navigation li {
     position: relative;
+    background-color: var(--mainHeader);
 }
 
 .navigation a {
@@ -55,6 +56,9 @@ header {
     font-size: 1em;
     padding: 10px 15px;
     display: block;
+    border: 2px solid var(--secondary);
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 
@@ -72,10 +76,11 @@ header {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: var(--mainHeader);
     list-style: none;
     padding: 10px 0;
     z-index: 1000;
+    background-color: invisible;
+    list-style: none;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
@@ -116,13 +121,14 @@ header {
 footer {
     background-color: var(--mainFooter); 
     color: var(--secondary);
-    padding: 20px 10px;
+    opacity: 0.7;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     text-align: center;
-    bottom: 0;
+    margin-top: auto; 
+    padding: 10px 5px;
 }
 
 .footer-container {
@@ -146,7 +152,8 @@ footer {
 }
 
 .footer-info p {
-    font-size: 0.9em;
+    font-size: 1.1em;
+    margin: 5px 0; 
 }
 
 .footer-links {
@@ -157,7 +164,7 @@ footer {
 .footer-links a {
     text-decoration: none;
     color: var(--secondary);
-    font-size: 0.9em;
+    font-size: 1.1em;
     transition: color 0.3s ease;
 }
 
@@ -179,14 +186,3 @@ main {
     flex: 1; /* Prend tout l'espace disponible entre le header et le footer */
 }
 
-footer {
-    background-color: var(--mainFooter); 
-    color: var(--secondary);
-    padding: 20px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    text-align: center;
-    margin-top: auto; /* Assure que le footer reste en bas */
-}
