@@ -8,14 +8,33 @@
         <form id="loginForm" method="post" action="./login.php">
             <div class="input" id="identifiant">
                 <img src="./css/img/user_01.png" class="icone" alt="user">
-                <input type="identifiant" placeholder="Identifiant" name="username_login">
+                <input type="identifiant" placeholder="Identifiant" name="usernameLogin">
             </div>
             <div class="input" id="password">
                 <img src="./css/img/lock.png" class="icone" alt="lock">
-                <input type="password" placeholder="Mot de passe" name="password_login" class="password">
+                <input type="password" placeholder="Mot de passe" name="passwordLogin" class="password">
                 <img src="./css/img/hide.png" class="toggle-eye" alt="hide">
             </div>
-            <input type="submit" value="Connexion" class="submit_button">
+            <input type="submit" value="Connexion" class="submitButton">
         </form>
+
+        <form id="signupForm" method="post" action="./signup.php" style="display: none;">
+            <div class="input" id="identifiant">
+                <img src="./css/img/user_01.png" class="icone" alt="user">
+                <input type="text" placeholder="Identifiant" name="usernameSignup">
+            </div>
+            <div class="input" id="email">
+                <img src="./css/img/at.png" class="icone" alt="email">
+                <input type="email" placeholder="Email" name="emailSignup">
+            </div>
+            <div class="input" id="password">
+                <img src="./css/img/lock.png" class="icone" alt="lock">
+                <input type="password" placeholder="Mot de passe" name="passwordSignup" class="password">
+                <img src="./css/img/hide.png" class="toggle-eye" alt="hide">
+            </div>
+            <input type="submit" value="Créer un compte" class="submitButton">
+        </form>
+
+        <button id="toggleFormButton" class="minimalButton toggle_button">Créer un compte</button>
     </div>
 </div>

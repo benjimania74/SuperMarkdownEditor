@@ -1,33 +1,44 @@
-.container {
+.profileContainer {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    font-family: Arial, sans-serif;
 }
 
-.hero {
+.profileHeader {
     background-color: var(--mainHeader);
     color: var(--secondary);
-    text-align: center;
+    padding: 20px;
     border-radius: 10px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    min-height: 200px
+    margin-bottom: 40px;
 }
 
-.hero h1 {
-    font-size: 2.5em;
-    margin-top: 0;
-    margin-bottom: 10px;
+.profileInfo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.hero p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+.profileAvatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid var(--secondary);
 }
 
-.hero .button {
+.profileDetails h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+.profileDetails p {
+    font-size: 1em;
+    margin: 5px 0;
+}
+
+.profileDetails .button {
     padding: 10px 20px;
     font-size: 1em;
     background-color: var(--tertiary);
@@ -37,48 +48,48 @@
     transition: background-color 0.3s ease;
 }
 
-.hero .button:hover {
+.profileDetails .button:hover {
     background-color: var(--secondary);
 }
 
-.features, .recommendations {
-    margin-top: 40px;
+/* Section des projets */
+.projectsSection {
+    margin-top: 20px;
 }
 
-.features h2, .recommendations h2 {
+.projectsSection h2 {
     text-align: center;
-    margin-top: 10px;
     margin-bottom: 20px;
     font-size: 2em;
 }
 
-.features-list, .projects-list {
+.projectsList {
     display: flex;
     gap: 20px;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
-.feature, .project {
+.projectCard {
     background-color: var(--main);
-    border: 1px solid var(--tertiary);
+    border: 1px solid var(--secondary);
     border-radius: 10px;
     padding: 20px;
     width: 300px;
     text-align: center;
 }
 
-.feature h3, .project h3 {
+.projectCard h3 {
     font-size: 1.5em;
     margin-bottom: 10px;
 }
 
-.feature p, .project p {
+.projectCard p {
     font-size: 1em;
     margin-bottom: 15px;
 }
 
-.project .button {
+.projectCard .button {
     padding: 8px 15px;
     font-size: 0.9em;
     background-color: var(--tertiary);
@@ -88,6 +99,6 @@
     transition: background-color 0.3s ease;
 }
 
-.project .button:hover {
+.projectCard .button:hover {
     background-color: var(--secondary);
 }

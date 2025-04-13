@@ -44,16 +44,20 @@
     padding-right: 26px;
 }
 
+.icone {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
 .toggle-eye {
     right: 10px;
     cursor: pointer;
     width: 25px;
     height: 25px;
 }
-
-
-
-
 
 input[type="checkbox"] {
     width: 20px;
@@ -64,11 +68,7 @@ input[type="checkbox"] {
     transition: background-color var(--transition-03) ease;
 }
 
-
-
-
-
-.submit_button {
+.submitButton {
     margin-top: 30px;
     background-color: var(--Secondary);
     width: 100%;
@@ -81,4 +81,23 @@ input[type="checkbox"] {
     border-radius: 10px;
     text-align: center;
     font-size: 30px;
+}
+
+.minimalButton {
+    margin-top: 20px;
+    background-color: transparent;
+    color: var(--Secondary);
+    border: 2px solid var(--Secondary);
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.minimalButton:hover {
+    background-color: var(--Secondary);
+    color: white;
 }
