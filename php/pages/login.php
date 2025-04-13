@@ -1,14 +1,21 @@
-<div id="connect">
-    <h1>Connexion</h1>
-    <form id="loginForm" method="POST" action="./login.php">
-        <div class="input-container">
-            <label for="username">Nom d'utilisateur :</label>
-            <input type="text" id="username" name="username" required>
-        </div>
-        <div class="input-container">
-            <label for="password">Mot de passe :</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button type="submit">Se connecter</button>
-    </form>
+<head>
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/front/login.js" defer></script>
+</head>
+<div id="loginContainer">
+    <div id="loginBox">
+        <h1>Connexion</h1>
+        <form id="loginForm" method="post" action="./login.php">
+            <div class="input" id="identifiant">
+                <img src="./css/img/user_01.png" class="icone" alt="user">
+                <input type="identifiant" placeholder="Identifiant" name="username_login">
+            </div>
+            <div class="input" id="password">
+                <img src="./css/img/lock.png" class="icone" alt="lock">
+                <input type="password" placeholder="Mot de passe" name="password_login" class="password">
+                <img src="./css/img/hide.png" class="toggle-eye" alt="hide">
+            </div>
+            <input type="submit" value="Connexion" class="submit_button">
+        </form>
+    </div>
 </div>
