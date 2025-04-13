@@ -1,4 +1,3 @@
-/* Styles pour la page d'accueil */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -14,7 +13,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 200px; /* Assure une hauteur minimale */
+    min-height: 200px
 }
 
 .hero h1 {
