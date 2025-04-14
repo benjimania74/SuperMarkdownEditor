@@ -1,15 +1,14 @@
 <?php
 if (isset($_POST["usernameLogin"]) && isset($_POST["passwordLogin"])) {
-    //$t = connect($conn, $_POST["usernameLogin"], $_POST["passwordLogin"]);
-    print("ca marche ?");
-    /*if () {
+    $t = connect($conn, $_POST["usernameLogin"], $_POST["passwordLogin"]);
+    if ($t["correct"]) {
         $_SESSION["user"] = $_POST["usernameLogin"];
         echo("ça MARCHHHHHHEEEEE");
-        //header("Location: ./account");
+        header("Location: ./account");
 
     } else {
         echo "<script>alert('Identifiant ou mot de passe incorrect');</script>";
-    }*/
+    }
 }
 ?>
 

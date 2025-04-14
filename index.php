@@ -1,7 +1,7 @@
 <?php
+session_start();
 include "./php/db/db_connect.php";
 include "./php/lib/session.php";
-session_start();
 if (isset($_GET["action"])) {
     $action = $_GET["action"];
     if ($action == "disconnect") {
