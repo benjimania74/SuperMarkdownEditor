@@ -72,7 +72,6 @@ function connect(mysqli $conn, string $login, string $password): array {
         "id" => $id,
         "correct" => $isCorrect
     ];
-    print_r($res);
     return $res;
 }
 ?>
