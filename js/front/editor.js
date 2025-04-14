@@ -43,5 +43,6 @@ const converter = document.getElementById('convertButton');
 converter.addEventListener('click', function () {
     const inputText = textarea.value;
     const outputDOM = getDOM(inputText);
-    outputMarkdown.innerHTML = outputDOM;
+    outputMarkdown.innerHTML = '';
+    outputMarkdown.appendChild(outputDOM);
 });
