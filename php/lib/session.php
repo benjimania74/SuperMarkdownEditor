@@ -39,8 +39,8 @@ function connect(mysqli $conn, string $login, string $password): array {
 
 function addUser(mysqli $conn, string $login, $name, $firstName, $mail, string $password) {
     if($login == "" || $password == "") { return false; }
-    $hashPsw = md5($password);
-    $query = "INSERT INTO `user` VALUES ('0', `$login`,`$name` , `$firstName`, `$mail`, `$hashPsw`)";
+    $hashPsw = hash("sha256", $password);
+    $query = "INSERT INTO `user`(`pseudo`,`name`,`firstName`,`mail`,`pswd`) VALUES ('$login','$name' , '$firstName', '$mail', '$hashPsw')";
     $ret = mysqli_query($conn, $query);
     return $ret;
 }
