@@ -10,7 +10,7 @@ function loginSource($login) {
     return $res;
 }
 
-function connectAdmin(mysqli $conn, string $login, string $password): array {
+function connect(mysqli $conn, string $login, string $password): array {
     $hashPsw = hash("sha256", $password);
     $query = "SELECT `id` FROM `user` WHERE `login`='$login' AND `mdp`='$hashPsw'";
     $ret = mysqli_query($conn, $query);
