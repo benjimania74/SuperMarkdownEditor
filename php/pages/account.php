@@ -1,3 +1,8 @@
+<?php
+$userId = $_SESSION["user"];
+$user = selectUser($conn, $userId);
+?>
+
 <head>
     <link rel="stylesheet" href="css/account.css">
     <script src="js/front/account.js" defer></script>
@@ -7,8 +12,16 @@
         <div class="profileInfo">
             <img src="img/user_01.png" alt="Avatar" class="profileAvatar">
             <div class="profileDetails">
-                <h1 id="profileName">Nom de l'utilisateur</h1>
-                <p id="profileEmail">email@example.com</p>
+                <h1 id="profileName">
+                    <?php
+                    echo ($user["pseudo"])
+                    ?>
+                </h1>
+                <p id="profileEmail">
+                    <?php
+                    echo($user["mail"])
+                    ?>
+                </p>
                 <button id="editProfileButton" class="button">Modifier le profil</button>
             </div>
         </div>

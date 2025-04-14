@@ -2,8 +2,7 @@
 if (isset($_POST["usernameLogin"]) && isset($_POST["passwordLogin"])) {
     $t = connect($conn, $_POST["usernameLogin"], $_POST["passwordLogin"]);
     if ($t["correct"]) {
-        $_SESSION["user"] = $_POST["usernameLogin"];
-        echo("ça MARCHHHHHHEEEEE");
+        $_SESSION["user"] = $t["id"];
         header("Location: ./account");
 
     } else {

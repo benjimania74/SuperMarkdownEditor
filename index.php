@@ -2,6 +2,10 @@
 session_start();
 include "./php/db/db_connect.php";
 include "./php/lib/session.php";
+include "./php/CRUD/file.crud.php";
+include "./php/CRUD/folder.crud.php";
+include "./php/CRUD/project.crud.php";
+include "./php/CRUD/user.crud.php";
 if (isset($_GET["action"])) {
     $action = $_GET["action"];
     if ($action == "disconnect") {
