@@ -37,3 +37,11 @@ resizer.addEventListener('mousedown', (e) => {
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
 });
+
+const converter = document.getElementById('convertButton');
+
+converter.addEventListener('click', function () {
+    const inputText = textarea.value;
+    const outputDOM = getDOM(inputText);
+    outputMarkdown.innerHTML = outputDOM;
+});
