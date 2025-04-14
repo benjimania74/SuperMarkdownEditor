@@ -1,7 +1,7 @@
 const codeParser = []
 
-function addCodeParser(language, fct) {
-    codeParser.push( (language, fct) );
+function addCodeParser(language, parser) {
+    codeParser[language] = parser;
 }
 
 function getCodeParser(language) {
