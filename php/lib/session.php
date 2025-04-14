@@ -33,7 +33,7 @@ function connect(mysqli $conn, string $login, string $password): array {
     return $res;
 }
 
-function addAdmin(mysqli $conn, string $login, $name, $firstName, $mail, string $password) {
+function addUser(mysqli $conn, string $login, $name, $firstName, $mail, string $password) {
     if($login == "" || $password == "") { return false; }
     $hashPsw = md5($password);
     $query = "INSERT INTO `user` VALUES ('0', `$login`,`$name` , `$firstName`, `$mail`, `$hashPsw`)";
@@ -41,7 +41,7 @@ function addAdmin(mysqli $conn, string $login, $name, $firstName, $mail, string 
     return $ret;
 }
 
-function deleteAdmin(mysqli $conn, int $id) {
+function deleteUser(mysqli $conn, int $id) {
     if($id == 0) { return false; }
     $query = "DELETE FROM `user` WHERE `id`='$id'";
     $ret = mysqli_query($conn, $query);
