@@ -1,6 +1,6 @@
 <head>
     <link rel="stylesheet" href="css/account.css">
-    <script src="js/front/editor.js" defer></script>
+    <script src="js/front/account.js" defer></script>
 </head>
 <div class="profileContainer">
     <div class="profileHeader">
