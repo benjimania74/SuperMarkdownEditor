@@ -1,0 +1,2 @@
+function projectView(nb) { 
+}

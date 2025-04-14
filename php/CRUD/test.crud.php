@@ -302,5 +302,13 @@
         selectFile($conn, $id);
     }
     ?>
+
+    <!-- test mail -->
+    <?php
+    echo "bjr";
+    $pq = loginSource("bjr");
+    echo "$pq";
+    echo "<br>";
+    ?>
 </body>
 </html>
