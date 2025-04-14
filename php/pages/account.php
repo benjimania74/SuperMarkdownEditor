@@ -10,7 +10,7 @@ $user = selectUser($conn, $userId);
 <div class="profileContainer">
     <div class="profileHeader">
         <div class="profileInfo">
-            <img src="img/user_01.png" alt="Avatar" class="profileAvatar">
+            <img src="./css/img/user_01.png" alt="Avatar" class="profileAvatar">
             <div class="profileDetails">
                 <h1 id="profileName">
                     <?php
