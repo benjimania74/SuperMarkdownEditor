@@ -1,4 +1,8 @@
 <?php
+include "./php/db/db_connect.php";
+include "./php/CRUD/user.crud.php";
+?>
+<?php
 if (isset($_POST["login"])) {
     if (connect($conn, $_POST["usernameLogin"], $_POST["passwordLogin"])) {
         $_SESSION["user"] = $_POST["usernameLogin"];
@@ -13,10 +17,7 @@ if (isset($_POST["login"])) {
     <link rel="stylesheet" href="css/login.css">
     <script src="js/front/login.js" defer></script>
 </head>
-<?php
-include "./php/db/db_connect.php";
-include "./php/CRUD/user.crud.php";
-?>
+
 <div id="loginContainer">
     <div id="loginBox">
         <h1>Connexion</h1>
