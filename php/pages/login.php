@@ -21,7 +21,7 @@ if (isset($_POST["login"])) {
 <div id="loginContainer">
     <div id="loginBox">
         <h1>Connexion</h1>
-        <form id="loginForm" method="post" action="./login.php">
+        <form id="loginForm" method="post" action="./login">
             <div class="input" id="identifiant">
                 <img src="./css/img/user_01.png" class="icone" alt="user">
                 <input type="identifiant" placeholder="Identifiant" name="usernameLogin">
