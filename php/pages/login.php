@@ -1,7 +1,22 @@
+<?php
+if (isset($_POST["login"])) {
+    if (connect($conn, $_POST["usernameLogin"], $_POST["passwordLogin"])) {
+        $_SESSION["user"] = $_POST["usernameLogin"];
+        header("Location: ./account");
+    } else {
+        echo "<script>alert('Identifiant ou mot de passe incorrect');</script>";
+    }
+}
+?>
+
 <head>
     <link rel="stylesheet" href="css/login.css">
     <script src="js/front/login.js" defer></script>
 </head>
+<?php
+include "./php/db/db_connect.php";
+include "./php/CRUD/user.crud.php";
+?>
 <div id="loginContainer">
     <div id="loginBox">
         <h1>Connexion</h1>
