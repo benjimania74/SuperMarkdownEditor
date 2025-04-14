@@ -1,17 +1,15 @@
 <?php
-include "./php/db/db_connect.php";
-include "./php/CRUD/user.crud.php";
-?>
-<?php
-if (isset($_POST["login"])) {
-    if (connect($conn, $_POST["usernameLogin"], $_POST["passwordLogin"])) {
+if (isset($_POST["usernameLogin"]) && isset($_POST["passwordLogin"])) {
+    //$t = connect($conn, $_POST["usernameLogin"], $_POST["passwordLogin"]);
+    print("ca marche ?");
+    /*if () {
         $_SESSION["user"] = $_POST["usernameLogin"];
         echo("ça MARCHHHHHHEEEEE");
-        header("Location: ./account");
+        //header("Location: ./account");
 
     } else {
         echo "<script>alert('Identifiant ou mot de passe incorrect');</script>";
-    }
+    }*/
 }
 ?>
 
