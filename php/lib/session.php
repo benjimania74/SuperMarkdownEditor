@@ -12,7 +12,7 @@ function loginSource($login) {
 
 function connect(mysqli $conn, string $login, string $password): array {
     $hashPsw = hash("sha256", $password);
-    $query = "SELECT `id` FROM `user` WHERE `login`='$login' AND `mdp`='$hashPsw'";
+    $query = "SELECT `id` FROM `user` WHERE `pseudo`='$login' AND `pswd`='$hashPsw'";
     $ret = mysqli_query($conn, $query);
 
     $id = null;
