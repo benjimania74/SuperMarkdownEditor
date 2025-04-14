@@ -10,19 +10,42 @@ function loginSource($login) {
     return $res;
 }
 
-function connect($conn,$login,$pswd){
-    $hashPsw = hash("sha256",$pswd);
-    if(loginSource($login)==true){
-        $query = "SELECT `id` FROM `user` WHERE `mail`='$login' AND `pswd`='$pswd'";
+function connectAdmin(mysqli $conn, string $login, string $password): array {
+    $hashPsw = hash("sha256", $password);
+    $query = "SELECT `id` FROM `user` WHERE `login`='$login' AND `mdp`='$hashPsw'";
+    $ret = mysqli_query($conn, $query);
+
+    $id = null;
+    $isCorrect = false;
+    
+    if($ret != false) {
+        while($r = mysqli_fetch_assoc($ret)) {
+            $id = $r["id"];
+            $isCorrect = true;
+            break;
+        }
     }
-    else {
-        $query = "SELECT `id` FROM `user` WHERE `pseudo`='$login' AND `pswd`='$pswd'";
-    }
-    $ret = mysqli_query($conn,$query);
+
+    $res = [
+        "id" => $id,
+        "correct" => $isCorrect
+    ];
+    return $res;
 }
 
-function disconnect(){
+function addAdmin(mysqli $conn, string $login, $name, $firstName, $mail, string $password) {
+    if($login == "" || $password == "") { return false; }
+    $hashPsw = md5($password);
+    $query = "INSERT INTO `user` VALUES ('0', `$login`,`$name` , `$firstName`, `$mail`, `$hashPsw`)";
+    $ret = mysqli_query($conn, $query);
+    return $ret;
+}
 
+function deleteAdmin(mysqli $conn, int $id) {
+    if($id == 0) { return false; }
+    $query = "DELETE FROM `user` WHERE `id`='$id'";
+    $ret = mysqli_query($conn, $query);
+    return $ret;
 }
 
 ?>
