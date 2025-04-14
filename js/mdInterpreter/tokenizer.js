@@ -21,6 +21,9 @@ function toToken(markdown) {
         } else if(line == "") {
             if(tokens.length != 0) {
                 tokenized = lineReturnTokenizer();
+            } else {
+                lineNumber += 1;
+                continue;
             }
         } else if(line.startsWith("> ")) {
             tokenized = quoteTokenizer(lines, lineNumber, totalLines);
@@ -77,7 +80,7 @@ function titleTokenizer(line) {
         "parsedLineCount": 1,
         "token": {
             "type": "title",
-            "treat": function (info) {return null;},
+            "treat": titleDomizer,
             "info": {
                 "level": titleLevel,
                 "value": value
@@ -92,7 +95,7 @@ function horizontalLineTokenizer() {
         "parsedLineCount": 1,
         "token": {
             "type": "hr",
-            "treat": function (info) {return null;},
+            "treat": horizontalLineDomizer,
             "info": {}
         }
     }
@@ -117,7 +120,7 @@ function codeTokenizer(lines, lineNumber, totalLines) {
         "parsedLineCount": i,
         "token": {
             "type": "code",
-            "treat": function (info) {return null;},
+            "treat": codeDomizer,
             "info": {
                 "language": codeLanguage,
                 "value": value
@@ -131,7 +134,7 @@ function lineReturnTokenizer() {
         "parsedLineCount": 1,
         "token": {
             "type": "br",
-            "treat": function (info) {return null;},
+            "treat": lineReturnDomizer,
             "info": {}
         }
     }
@@ -151,7 +154,7 @@ function quoteTokenizer(lines, lineNumber, totalLines) {
         "parsedLineCount": i,
         "token": {
             "type": "quote",
-            "treat": function (info) {return null;},
+            "treat": quoteDomizer,
             "info": {
                 "value": value
             }
@@ -159,27 +162,115 @@ function quoteTokenizer(lines, lineNumber, totalLines) {
     }
 }
 
-function listTokenizer(lines, lineNumber, totalLines, offset = 0) {
-    /*var value = {};
+function listTokenizer(lines, lineNumber, totalLines, level = 0) {
+    var value = {};
+    var n = 0;
     var i = 0;
+    var canContinue = true;
     var line = lines[lineNumber];
+    
     while(
         lineNumber + i < totalLines &&
-        line != "" &&
-        (
-            line.slice(0, offset).replaceAll(" ", "") == "" &&
-            (isListStart(line.slice(offset)) || isOrdonatedListStart(line.slice(offset)))
-        )
+        line.slice(0, level).replaceAll(" ", "") == "" &&
+        canContinue
     ) {
+        var treatedLineNumber = 0;
         
-    }*/
-   // TODO
-   return {}
+        var newLine = line.slice(level);
+        if(isListStart(newLine)) {
+            value[n] = newLine.slice(2);
+            n++;
+            treatedLineNumber = 1;
+        } else if(newLine[0] == " ") {
+            newLine = newLine.slice(1)
+            if(isListStart(newLine)) {
+                var tokenized = listTokenizer(lines, lineNumber+i, totalLines, level + 1);
+                value[n] = tokenized["token"];
+                treatedLineNumber = tokenized["parsedLineCount"];
+            } else if(isOrdonatedListStart(newLine)) {
+                var tokenized = ordonatedListTokenizer(lines, lineNumber+i, totalLines, level + 1);
+                value[n] = tokenized["token"];
+                treatedLineNumber = tokenized["parsedLineCount"];
+                n++;
+            } else {
+                canContinue = false;
+            }
+        } else {
+            canContinue = false;
+        }
+        
+        i += treatedLineNumber;
+
+        if(lineNumber + i < totalLines) {
+            line = lines[lineNumber + i];
+        }
+    }
+    return {
+        "parsedLineCount": i,
+        "token": {
+            "type": "list",
+            "treat": listDomizer,
+            "info": {
+                "value": value
+            }
+        }
+    }
 }
 
-function ordonatedListTokenizer(lines, lineNumber, totalLines, offset = 0) {
-    // TODO
-    return {}
+function ordonatedListTokenizer(lines, lineNumber, totalLines, level = 0) {
+    var value = {};
+    var n = 0;
+    var i = 0;
+    var canContinue = true;
+    var line = lines[lineNumber];
+    
+    while(
+        lineNumber + i < totalLines &&
+        line.slice(0, level).replaceAll(" ", "") == "" &&
+        canContinue
+    ) {
+        var treatedLineNumber = 0;
+        
+        var newLine = line.slice(level);
+        if(isOrdonatedListStart(newLine)) {
+            value[n] = newLine.slice(2);
+            n++;
+            treatedLineNumber = 1;
+        } else if(newLine[0] == " ") {
+            newLine = newLine.slice(1)
+            if(isListStart(newLine)) {
+                var tokenized = listTokenizer(lines, lineNumber+i, totalLines, level + 1);
+                value[n] = tokenized["token"];
+                treatedLineNumber = tokenized["parsedLineCount"];
+            } else if(isOrdonatedListStart(newLine)) {
+                var tokenized = ordonatedListTokenizer(lines, lineNumber+i, totalLines, level + 1);
+                value[n] = tokenized["token"];
+                treatedLineNumber = tokenized["parsedLineCount"];
+                n++;
+            } else {
+                canContinue = false;
+            }
+        } else {
+            canContinue = false;
+        }
+        
+        i += treatedLineNumber;
+
+        if(lineNumber + i < totalLines) {
+            line = lines[lineNumber + i];
+        }
+    }
+    
+    return {
+        "parsedLineCount": i,
+        "token": {
+            "type": "ordonatedList",
+            "treat": ordinatedListDomizer,
+            "info": {
+                "value": value
+            }
+        }
+    }
 }
 
 function paragraphTokenizer(lines, lineNumber, totalLines) {
@@ -196,7 +287,7 @@ function paragraphTokenizer(lines, lineNumber, totalLines) {
         "parsedLineCount": i,
         "token": {
             "type": "paragraph",
-            "treat": function (info) {return null;},
+            "treat": paragraphDomizer,
             "info": {
                 "value": value
             }
