@@ -1,7 +1,8 @@
 <?php
 
 function createUser($conn, $pseudo, $name, $firstName, $mail, $pswd) {
-    $sql = "INSERT INTO `user`(`pseudo`, `name`, `firstName`, `mail`, `pswd`) VALUES ('$pseudo', '$name', '$firstName', '$mail', '$pswd')";
+    $hashPsw = hash("sha256", $pswd);
+    $sql = "INSERT INTO `user`(`pseudo`, `name`, `firstName`, `mail`, `pswd`) VALUES ('$pseudo', '$name', '$firstName', '$mail', '$hashPsw')";
     $ret = mysqli_query($conn, $sql);
     if (!$ret) {
         return "Error: " . mysqli_error($conn);
