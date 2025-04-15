@@ -1,0 +1,104 @@
+.profileContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.profileHeader {
+    background-color: var(--mainHeader);
+    color: var(--secondary);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.profileInfo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profileAvatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid var(--secondary);
+}
+
+.profileDetails h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+.profileDetails p {
+    font-size: 1em;
+    margin: 5px 0;
+}
+
+.profileDetails .button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: var(--tertiary);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.profileDetails .button:hover {
+    background-color: var(--secondary);
+}
+
+/* Section des projets */
+.projectsSection {
+    margin-top: 20px;
+}
+
+.projectsSection h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.projectsList {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.projectCard {
+    background-color: var(--main);
+    border: 1px solid var(--secondary);
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.projectCard h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.projectCard p {
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+.projectCard .button {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    background-color: var(--tertiary);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.projectCard .button:hover {
+    background-color: var(--secondary);
+}

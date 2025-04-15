@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+}
+
+
+#convertButton {
+    background-color: white;
+}
+
+.resizer {
+    width: 5px;
+    background-color: #aaa;
+    cursor: ew-resize;
+    flex-shrink: 0;
+}
+
+#editorContainer {
+    display: flex;
+    width: 100%;
+    margin: 1%;
+    box-sizing: border-box;
+    flex-direction: row;
+}
+
+#inputcontainer,
+#outputMarkdown {
+    background-color: beige;
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: auto;
+    min-height: 400px;
+}
+
+#inputUser {
+    min-height: 400px;
+    resize: none;
+    width: 100%;
+    overflow: hidden;
+    background-color: beige;
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#outputMarkdown {
+    width: 50%;
+}
