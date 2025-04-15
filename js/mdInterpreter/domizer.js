@@ -1,21 +1,5 @@
-const codeParser = []
-
-function addCodeParser(language, parser) {
-    codeParser[language] = parser;
-}
-
-function getCodeParser(language) {
-    return codeParser[language];
-}
-
 function getDOM(md) {
     return toDOM( toToken(md) );
-}
-
-function convert() {
-    var ta = document.getElementById("ta");
-    var dom = getDOM(ta.value);
-    document.body.appendChild(dom);
 }
 
 // Convert tokens to DOM
@@ -63,7 +47,7 @@ function codeDomizer(info) {
     var value = info["value"];
     
     if(codeParser != undefined) {
-        codePreTag.appendChild( codeParser( value ) );
+        codeParser( codePreTag, value );
     } else {
         codePreTag.innerHTML = value;
     }
