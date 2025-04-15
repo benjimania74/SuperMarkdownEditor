@@ -63,7 +63,7 @@ function codeDomizer(info) {
     var value = info["value"];
     
     if(codeParser != undefined) {
-        codePreTag.appendChild( codeParser( value ) );
+        codeParser( codePreTag, value );
     } else {
         codePreTag.innerHTML = value;
     }
