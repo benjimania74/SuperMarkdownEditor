@@ -1,4 +1,10 @@
 @font-face {
     font-family: "Geneva";
-    src: url(./fonts/GENEVA.TTF);
+    src: url(./fonts/GENEVA.TTF) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    font-family: 'Geneva', sans-serif;
 }
