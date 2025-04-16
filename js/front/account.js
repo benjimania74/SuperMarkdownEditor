@@ -1,3 +1,5 @@
+onload = projectPoster;
+
 function projectView(project) {
     const div = document.createElement("div");
     const h3 = document.createElement("h3");
