@@ -13,7 +13,7 @@ function projectView(project) {
     div.appendChild(a);
 }
 
-function projectsView(projects) {
+function projectPoster(projects) {
     const section = document.createElement("section");
     const h2 = document.createElement("h2");
 
