@@ -14,6 +14,7 @@ function projectView(project) {
 }
 
 function projectPoster(projects) {
+    
     const section = document.createElement("section");
     const h2 = document.createElement("h2");
 
