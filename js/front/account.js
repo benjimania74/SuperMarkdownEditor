@@ -14,6 +14,13 @@ function projectView(project) {
 }
 
 function projectsView(projects) {
+    const section = document.createElement("section");
+    const h2 = document.createElement("h2");
+
+    section.className = "projectsSection";
+    h2.innerHTML = "Mes projets";
+    section.appendChild(h2);
+
     for (let i in projects) {
         projectView(project[i]);
     }
