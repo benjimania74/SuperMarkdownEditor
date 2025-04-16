@@ -24,7 +24,7 @@
 
 #inputcontainer,
 #outputMarkdown {
-    background-color: beige;
+    background-color: darkgrey;
     flex: 1;
     border: 1px solid #ccc;
     padding: 10px;
