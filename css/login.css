@@ -4,7 +4,8 @@
     height: 560px;
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 #loginBox {
@@ -15,9 +16,6 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(15px);
 }
 
 #loginBox form {
@@ -52,7 +50,7 @@
     vertical-align: middle;
 }
 
-.toggle-eye {
+.toggleEye {
     right: 10px;
     cursor: pointer;
     width: 25px;

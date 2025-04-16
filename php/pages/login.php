@@ -27,7 +27,7 @@ if (isset($_POST["usernameLogin"]) && isset($_POST["passwordLogin"])) {
             <div class="input" id="password">
                 <img src="./css/img/lock.png" class="icone" alt="lock">
                 <input type="password" placeholder="Mot de passe" name="passwordLogin" class="password">
-                <img src="./css/img/hide.png" class="toggle-eye" alt="hide">
+                <img src="./css/img/hide.png" class="toggleEye" alt="hide">
             </div>
             <input type="submit" value="Connexion" class="submitButton">
         </form>
@@ -44,7 +44,7 @@ if (isset($_POST["usernameLogin"]) && isset($_POST["passwordLogin"])) {
             <div class="input" id="password">
                 <img src="./css/img/lock.png" class="icone" alt="lock">
                 <input type="password" placeholder="Mot de passe" name="passwordSignup" class="password">
-                <img src="./css/img/hide.png" class="toggle-eye" alt="hide">
+                <img src="./css/img/hide.png" class="toggleEye" alt="hide">
             </div>
             <input type="submit" value="Créer un compte" class="submitButton">
         </form>
