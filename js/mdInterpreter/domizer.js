@@ -27,13 +27,11 @@ function titleDomizer(info) {
     titleDiv.classList.add("titleDiv");
 
     var title = document.createElement("h" + level);
-    title.innerHTML = value;
+    textTransformerToParent(title, value);
+    //title.innerHTML = value;
 
     titleDiv.appendChild(title);
 
-    if(level <= 3) {
-        titleDiv.appendChild( document.createElement("hr") );
-    }
     return titleDiv;
 }
 
@@ -61,7 +59,8 @@ function lineReturnDomizer(info) {
 function quoteDomizer(info) {
     var quoteTag = document.createElement("p");
     quoteTag.classList.add("quote");
-    quoteTag.innerHTML = info["value"];
+    textTransformerToParent(quoteTag, info["value"]);
+    //quoteTag.innerHTML = info["value"];
     return quoteTag;
 }
 
@@ -73,7 +72,8 @@ function listDomizer(info) {
         var line = value[i];
         if(typeof line == "string") {
             var element = document.createElement("li");
-            element.innerHTML = line;
+            textTransformerToParent(element, line);
+            //element.innerHTML = line;
             list.appendChild(element);
         } else {
             list.appendChild( line.treat( line.info ) );
@@ -90,7 +90,8 @@ function ordinatedListDomizer(info) {
         var line = value[i];
         if(typeof line == "string") {
             var element = document.createElement("li");
-            element.innerHTML = line;
+            textTransformerToParent(element, line);
+            //element.innerHTML = line;
             list.appendChild(element);
         } else {
             list.appendChild( line.treat( line.info ) );
@@ -101,6 +102,7 @@ function ordinatedListDomizer(info) {
 
 function paragraphDomizer(info) {
     var p = document.createElement("p");
-    p.innerHTML = info["value"];
+    //p.innerHTML = info["value"];
+    textTransformerToParent(p, info["value"]);
     return p;
 }
