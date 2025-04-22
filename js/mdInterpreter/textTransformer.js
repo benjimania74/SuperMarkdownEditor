@@ -1,136 +1,101 @@
-function textTransformer(text) {
-    var textLength = text.length;
-    var generatedDOMList = [];
-    
-    var i = 0;
-    var isEscaped = false;
-    var actualText = "";
-    while(i < textLength) {
-        var step = 1;
-        var caracter = text[i];
-
-        if(caracter == "*") {
-            if(isEscaped) {
-                actualText += caracter;
-                isEscaped = false;
-            } else {
-                if(text[i + 1] == "*") {
-                    var trtBold = parseType(text, i, "**", toBold);
-                    //var trtBold = parseBold(text, i);
-                    if(trtBold["valid"]) {
-                        if(actualText != "") {
-                            generatedDOMList.push( toSpan(actualText) );
-                            actualText = "";
-                        }
-
-                        step = trtBold["treated_size"];
-                        generatedDOMList.push(trtBold["dom"]);
-                    } else {
-                        actualText += caracter;
-                    }
-                } else {
-                    var trtItalic = parseType(text, i, "*", toItalic);
-                    //var trtItalic = parseItalic(text, i);
-                    if(trtItalic["valid"]) {
-                        if(actualText != "") {
-                            generatedDOMList.push( toSpan(actualText) );
-                            actualText = "";
-                        }
-
-                        step = trtItalic["treated_size"];
-                        generatedDOMList.push(trtItalic["dom"]);
-                    } else {
-                        actualText += caracter;
-                    }
-                }
-            }
-        } else if(caracter == "_") {
-            if(isEscaped) {
-                actualText += caracter;
-                isEscaped = false;
-            } else {
-                if(text[i + 1] == "_") {
-                    var trtUnderline = parseType(text, i, "__", toUnderline);
-                    //var trtUnderline = parseUnderline(text, i);
-                    if(trtUnderline["valid"]) {
-                        if(actualText != "") {
-                            generatedDOMList.push( toSpan(actualText) );
-                            actualText = "";
-                        }
-                        
-                        step = trtUnderline["treated_size"];
-                        generatedDOMList.push(trtUnderline["dom"]);
-                    } else {
-                        actualText += caracter;
-                    }
-                } else {
-                    actualText += caracter;
-                }
-            }
-        } else if(caracter == "~") {
-            if(isEscaped) {
-                actualText += caracter;
-                isEscaped = false;
-            } else {
-                if(text[i + 1] == "~") {
-                    var trtStrike = parseType(text, i, "~~", toStrike);
-                    //var trtStrike = parseStrike(text, i);
-                    if(trtStrike["valid"]) {
-                        if(actualText != "") {
-                            generatedDOMList.push( toSpan(actualText) );
-                            actualText = "";
-                        }
-
-                        step = trtStrike["treated_size"];
-                        generatedDOMList.push(trtStrike["dom"]);
-                    } else {
-                        actualText += caracter;
-                    }
-                } else {
-                    actualText += caracter;
-                }
-            }
-        } else {
-            if(caracter == "\\") {
-                if(isEscaped) {
-                    actualText += caracter;
-                    isEscaped = false;
-                } else {
-                    isEscaped = true;
-                }
-            } else {
-                actualText += caracter;
-            }
-        }
-        i += step;
-    }
-    if(actualText != "") {
-        generatedDOMList.push( toSpan(actualText) );
-    }
-    return generatedDOMList;
-}
-
-function parseType(text, start, tag, transformer) {
-    var res = {"valid": true};
-    var tagLength = tag.length;
-    var endOf = text.indexOf(tag, start + tagLength);
-
-    if(endOf == -1) {
-        res["valid"] = false;
-    } else {
-        res["treated_size"] = endOf + tagLength - start;
-        res["dom"] = transformer( text.slice(start + tagLength, endOf));
-    }
-
-    return res;
-}
-
 function textTransformerToParent(parent, text) {
     var domList = textTransformer(text);
     domList.forEach(dom => {
         parent.appendChild(dom);
     });
 }
+
+function textTransformer(text) {
+    var textLength = text.length;
+    var generatedDOMList = [];
+
+    const tags = getTags();
+    
+    var i = 0;
+    var actualText = "";
+    var isEscaped = false;
+    while(i < textLength) {
+        var caracter = text[i];
+
+        if(isEscaped) {
+            actualText += caracter;
+            isEscaped = false;
+            i++;
+            continue;
+        }
+
+        var step = 1;
+
+        var tagsLevel = Object.keys(tags).reverse();
+        var j = 0;
+        var treated = false;
+        while(j < tagsLevel.length && !treated) {
+            var level = tagsLevel[j];
+            var levelTags = tags[level];
+
+            var w = 0;
+            while(w < levelTags.length && !treated) {
+                var tagInfo = levelTags[w];
+                var tag = tagInfo["tag"];
+                console.log(tagInfo);
+                console.log(text.slice(i, i + parseInt(level) ));
+                console.log("tt");
+
+                if(text.slice(i, i + parseInt(level)) == tag) {
+                    var endsOfTag = nextValidTag(text, tag, i + parseInt(level));
+                    if(endsOfTag != -1) {
+                        var treatedTag = tagInfo.treat( text.slice(i + parseInt(level), endsOfTag) );
+                        if(treatedTag instanceof Element) {
+                            if(actualText != "") {
+                                generatedDOMList.push( generateSpan(actualText) );
+                                actualText = "";
+                            }
+
+                            generatedDOMList.push( treatedTag );
+                            step = endsOfTag + parseInt(level) - i;
+                            treated = true;
+                        }
+                    }
+                }
+
+                w++;
+            }
+
+            j++;
+        }
+
+        if(!treated) {
+            actualText += caracter;
+        }
+
+        i += step;
+    }
+
+    if(actualText != "") {
+        generatedDOMList.push( generateSpan(actualText) );
+    }
+
+    return generatedDOMList;
+}
+
+function nextValidTag(text, tag, offset) {
+    var next = text.indexOf(tag, offset);
+    if(next == -1) {
+        return next;
+    }
+    if(text[next - 1] == "\\") {
+        return nextValidTag(text, tag, next + 1);
+    }
+    return next;
+}
+
+function generateSpan(text) {
+    var p = document.createElement("span");
+    p.innerHTML = text;
+    return p;
+}
+
+/*
 
 function toSpan(text) {
     var span = document.createElement("span");
@@ -160,4 +125,4 @@ function toStrike(text) {
     var s = document.createElement("s");
     s.innerHTML = text;
     return s;
-}
+}*/
