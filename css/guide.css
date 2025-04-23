@@ -1,0 +1,73 @@
+#rules {
+    margin: 0 auto;
+}
+
+#rules > div {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 1px solid #2d2d55;
+    border-radius: 10px;
+    background-color: var(--mainHeader);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Paragraphes */
+#rules p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+/* Code inline et blocs */
+#rules code {
+    display: block;
+    background-color: #272822;
+    color: #f8f8f2;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-top: 0.5rem;
+    white-space: pre-wrap;
+}
+
+/* Mise en valeur des balises HTML dans les exemples */
+#rules code strong, code em, code u, code del, code a, code img, code table, code sup, code mark {
+    color: #ffcc66;
+}
+
+/* Titres HTML dans les exemples */
+#rules code h1, code h2, code h3, code h4, code h5, code h6 {
+    color: #66d9ef;
+    margin: 0.5rem 0;
+}
+
+/* Table dans les exemples */
+#rules code table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#rules code td {
+    border: 1px solid #444;
+    padding: 0.5rem;
+    color: #a6e22e;
+}
+
+/* Lien dans les exemples */
+#rules code a {
+    color: #61dafb;
+    text-decoration: underline;
+}
+
+/* Surlignage */
+#rules mark {
+    background-color: #f1c40f;
+    color: #000;
+    padding: 0 4px;
+    border-radius: 3px;
+}
+
+/* Image et emoji */
+#rules code img {
+    height: 1.5em;
+    vertical-align: middle;
+}
