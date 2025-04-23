@@ -45,11 +45,13 @@
         <p>Exemple :</p>
         <code>[Texte du lien](https://www.google.com) = <a href="https://www.google.com">Texte du lien</a></code>
     </div>
+    <!--
     <div id="image">
         <p>Pour mettre une image, il faut le mettre entre deux ![] et ()</p>
         <p>Exemple :</p>
         <code>![Texte de l'image](https://www.google.com/image.png) = <img src="https://www.google.com/image.png" alt="Texte de l'image"></code>
     </div>
+    -->
     <div id="list">
         <p>Pour faire une liste, il faut mettre un * ou - devant chaque élément</p>
         <p>Exemple :</p>
@@ -90,6 +92,7 @@
         <p>Exemple :</p>
         <code>[^1] Élément 1<br>[^2] Élément 2<br>[^3] Élément 3 = <sup>1</sup>Élément 1<br><sup>2</sup>Élément 2<br><sup>3</sup>Élément 3</code>
     </div>
+    <!--  
     <div id="emoji">
         <p>Pour faire un emoji, il faut mettre : devant et derrière le texte</p>
         <p>Exemple :</p>
@@ -100,5 +103,5 @@
         <p>Exemple :</p>
         <code>$E=mc^2$ = <img src="https://www.google.com/equation.png" alt="$E=mc^2$"></code>
     </div>
-
+    -->
 </div>
