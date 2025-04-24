@@ -2,9 +2,19 @@
     box-sizing: border-box;
 }
 
+#convertButton{
+    display: block;
+    margin: 1rem auto;
+    background-color: var(--tertiary);
+    color: white;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
 
-#convertButton {
-    background-color: white;
+#convertButton:hover {
+    background-color: var(--secondary);
 }
 
 .resizer {
@@ -24,27 +34,30 @@
 
 #inputcontainer,
 #outputMarkdown {
-    background-color: darkgrey;
-    flex: 1;
-    border: 1px solid #ccc;
-    padding: 10px;
+    flex: 1;;
     box-sizing: border-box;
     overflow: auto;
     min-height: 400px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    margin: 0.5rem;
 }
 
+#inputcontainer {
+    background-color: var(--main);
+}
+
+#outputMarkdown {
+    background-color: #2B2A3F;
+    width: 50%;
+}
 #inputUser {
     min-height: 400px;
     resize: none;
     width: 100%;
     overflow: hidden;
-    background-color: beige;
+    background-color:#f1f1f1;
     flex: 1;
-    border: 1px solid #ccc;
-    padding: 10px;
     box-sizing: border-box;
 }
 
-#outputMarkdown {
-    width: 50%;
-}
