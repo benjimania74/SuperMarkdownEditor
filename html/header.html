@@ -28,6 +28,12 @@
     </nav>
     <div class="user-actions">
         <a id="save-project" href="./save" class="button">Sauvegarder</a>
+        <?php if (isset($_SESSION["user"])): ?>
+        <!-- Si l'utilisateur est connecté -->
+        <a id="account-button" href="./account" class="button">Mon compte</a>
+        <?php else: ?>
+        <!-- Si l'utilisateur n'est pas connecté -->
         <a id="login-button" href="./login" class="button">Login</a>
+        <?php endif; ?>
     </div>
 </header>

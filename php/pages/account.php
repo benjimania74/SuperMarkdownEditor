@@ -15,14 +15,15 @@ $user = selectUser($conn, $userId);
                 <h1 id="profileName">
                     <?php
                     echo ($user["pseudo"])
-                    ?>
+                        ?>
                 </h1>
                 <p id="profileEmail">
                     <?php
-                    echo($user["mail"])
-                    ?>
+                    echo ($user["mail"])
+                        ?>
                 </p>
                 <button id="editProfileButton" class="button">Modifier le profil</button>
+                <a id="logOut" href="./logout" class="button">Déconnexion</a>
             </div>
         </div>
     </div>
