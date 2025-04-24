@@ -37,9 +37,6 @@ function textTransformer(text) {
             while(w < levelTags.length && !treated) {
                 var tagInfo = levelTags[w];
                 var tag = tagInfo["tag"];
-                console.log(tagInfo);
-                console.log(text.slice(i, i + parseInt(level) ));
-                console.log("tt");
 
                 if(text.slice(i, i + parseInt(level)) == tag) {
                     var endsOfTag = nextValidTag(text, tag, i + parseInt(level));
@@ -94,35 +91,3 @@ function generateSpan(text) {
     p.innerHTML = text;
     return p;
 }
-
-/*
-
-function toSpan(text) {
-    var span = document.createElement("span");
-    span.innerHTML = text;
-    return span;
-}
-
-function toBold(text) {
-    var b = document.createElement("b");
-    b.innerHTML = text;
-    return b;
-}
-
-function toItalic(text) {
-    var i = document.createElement("i");
-    i.innerHTML = text;
-    return i;
-}
-
-function toUnderline(text) {
-    var u = document.createElement("u");
-    u.innerHTML = text;
-    return u;
-}
-
-function toStrike(text) {
-    var s = document.createElement("s");
-    s.innerHTML = text;
-    return s;
-}*/

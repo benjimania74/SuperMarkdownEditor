@@ -8,63 +8,22 @@ function toDOM(tokens) {
     domDiv.classList.add("md");
 
     tokens.forEach(token => {
-        var treated = token.treat(token.info);
-
+        var treated = token.treat(token.value);
         if(treated == null) {
-            treated = paragraphDomizer(token.info);
+            treated = paragraphDomizer(token.value);
         }
-
-        domDiv.appendChild( treated ); 
+        domDiv.appendChild( treated );
     });
     return domDiv;
 }
 
-function titleDomizer(info) {
-    var level = parseInt( info["level"] );
-    var value = info["value"];
-
-    var titleDiv = document.createElement("div");
-    titleDiv.classList.add("titleDiv");
-
-    var title = document.createElement("h" + level);
-    textTransformerToParent(title, value);
-    //title.innerHTML = value;
-
-    titleDiv.appendChild(title);
-
-    return titleDiv;
+function paragraphDomizer(value) {
+    var p = document.createElement("p");
+    textTransformerToParent(p, value);
+    return p;
 }
 
-function horizontalLineDomizer(info) {
-    return document.createElement("hr");
-}
-
-function codeDomizer(info) {
-    var codeParser = getCodeParser(info["language"]);
-    var codePreTag = document.createElement("pre");
-    var value = info["value"];
-    
-    if(codeParser != undefined) {
-        codeParser( codePreTag, value );
-    } else {
-        codePreTag.innerHTML = value;
-    }
-    return codePreTag;
-}
-
-function lineReturnDomizer(info) {
-    return document.createElement("br");
-}
-
-function quoteDomizer(info) {
-    var quoteTag = document.createElement("p");
-    quoteTag.classList.add("quote");
-    textTransformerToParent(quoteTag, info["value"]);
-    //quoteTag.innerHTML = info["value"];
-    return quoteTag;
-}
-
-function listDomizer(info) {
+/*function listDomizer(info) {
     var list = document.createElement("ul");
     var value = info["value"];
 
@@ -98,11 +57,4 @@ function ordinatedListDomizer(info) {
         }
     }
     return list;
-}
-
-function paragraphDomizer(info) {
-    var p = document.createElement("p");
-    //p.innerHTML = info["value"];
-    textTransformerToParent(p, info["value"]);
-    return p;
-}
+}*/
