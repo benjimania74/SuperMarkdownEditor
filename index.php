@@ -31,7 +31,7 @@ if (isset($_GET["action"])) {
     <script src="./js/front/front.js"></script>
 </head>
 
-<body>
+<body onload="add_message_bienvenue()">
     <?php
     include("html/header.html");
     ?>

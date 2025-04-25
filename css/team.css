@@ -1,0 +1,78 @@
+/* En-tête */
+.header2 {
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+.header2 h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.header2 p {
+    margin: 10px 0 0;
+    font-size: 1.2em;
+}
+
+/* Section de l'équipe */
+.team {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.team-member {
+    background-color: var(--mainHeader);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.team-member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 2px solid #007bff;
+}
+
+.team-member h2 {
+    margin: 10px 0 5px;
+    font-size: 1.5em;
+    color: #007bff;
+}
+
+.team-member p {
+    margin: 5px 0;
+    font-size: 1em;
+}
+
+/* Boutons */
+.button {
+    display: inline-block;
+    margin: 5px 5px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
