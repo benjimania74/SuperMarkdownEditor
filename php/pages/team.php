@@ -18,21 +18,15 @@
         </div>
         <div class="team-member">
             <img src="../../img/team/member2.jpg" alt="Photo de Marie Curie">
-            <h2>Marie Curie</h2>
+            <h2>Maël ALBRECHT</h2>
             <p>Développeuse Backend</p>
             <p>Marie a conçu et implémenté l'architecture backend du projet.</p>
         </div>
         <div class="team-member">
-            <img src="../../img/team/member3.jpg" alt="Photo de Albert Einstein">
-            <h2>Albert Einstein</h2>
-            <p>Chef de Projet</p>
-            <p>Albert a coordonné les efforts de l'équipe et assuré la livraison du projet.</p>
-        </div>
-        <div class="team-member">
-            <img src="../../img/team/member4.jpg" alt="Photo de Ada Lovelace">
-            <h2>Ada Lovelace</h2>
-            <p>Designer</p>
-            <p>Ada a créé les designs et les maquettes pour l'application.</p>
+            <img src="../../img/team/member3.jpg" alt="Photo de Etienne">
+            <h2>Etienne MALABRE</h2>
+            <p>Développeur frontend</p>
+            <p>Etienne à fournit l'interface et la liaison front/back</p>
         </div>
     </section>
 </main>
