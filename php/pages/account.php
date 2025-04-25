@@ -3,11 +3,9 @@ $userId = $_SESSION["user"];
 $user = selectUser($conn, $userId);
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Traitement du formulaire de modification
     $newPseudo = $_POST["pseudo"];
     $newMail = $_POST["mail"];
 
-    // Met à jour les informations utilisateur dans la base de données
     $updateSuccess = updateUser($conn, $userId, $newPseudo, $user["name"], $user["firstName"], $newMail, $user["pswd"]);
 
     if ($updateSuccess) {
