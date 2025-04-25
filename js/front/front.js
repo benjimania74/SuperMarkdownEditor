@@ -68,9 +68,5 @@ function get_message_bienvenue() {
 
     let index_message_random = Math.floor(Math.random() * messages.length);
 
-    if (debug) {
-        console.log(index_message_random, messages[index_message_random]);
-    };
-
     return messages[index_message_random];
 }

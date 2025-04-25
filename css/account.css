@@ -2,17 +2,19 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
 }
 
 .profileHeader {
     background-color: var(--mainHeader);
     color: var(--secondary);
-    padding: 20px;
+    padding: 10px; /* Réduit l'espacement interne */
     border-radius: 10px;
     display: flex;
     align-items: center;
-    margin-bottom: 40px;
+    justify-content: center; /* Centre le contenu horizontalement */
+    margin: 20px auto; /* Centre horizontalement avec un espacement vertical */
+    max-width: 600px; /* Réduit la largeur maximale */
+    text-align: center; /* Centre le texte à l'intérieur */
 }
 
 .profileInfo {

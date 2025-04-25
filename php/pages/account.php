@@ -22,38 +22,42 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="css/account.css">
     <script src="js/front/account.js" defer></script>
 </head>
-<div class="profileHeader">
-    <div class="profileInfo">
-        <img src="./css/img/user_01.png" alt="Avatar" class="profileAvatar">
-        <div class="profileDetails">
-            <h1 id="profileName">
-                <?php
-                echo ($user["pseudo"])
-                    ?>
-            </h1>
-            <p id="profileEmail">
-                <?php
-                echo ($user["mail"])
-                    ?>
-            </p>
-            <button id="editProfileButton" class="button">Modifier le profil</button>
-            <a id="logOut" href="./logout" class="button">Déconnexion</a>
+<div class="profileContainer">
+    <div class="profilHeader">
+        <div class="profileInfo">
+            <img src="./css/img/user_01.png" alt="Avatar" class="profileAvatar">
+            <div class="profileDetails">
+                <h1 id="profileName">
+                    <?php
+                    echo ($user["pseudo"])
+                        ?>
+                </h1>
+                <p id="profileEmail">
+                    <?php
+                    echo ($user["mail"])
+                        ?>
+                </p>
+                <button id="editProfileButton" class="button">Modifier le profil</button>
+                <a id="logOut" href="./logout" class="button">Déconnexion</a>
+            </div>
+            <!-- Formulaire de modification -->
+            <div id="editProfileForm">
+                <form method="post" action="./account" style="display: none;">
+                    <div class="input">
+                        <label for="pseudo">Pseudo :</label>
+                        <input type="text" id="pseudo" name="pseudo"
+                            value="<?php echo htmlspecialchars($user["pseudo"]); ?>" required>
+                    </div>
+                    <div class="input">
+                        <label for="mail">Email :</label>
+                        <input type="email" id="mail" name="mail" value="<?php echo htmlspecialchars($user["mail"]); ?>"
+                            required>
+                    </div>
+                    <input type="submit" value="Enregistrer" class="button">
+                    <button type="button" id="cancelEditButton" class="button">Annuler</button>
+                </form>
+            </div>
         </div>
-        <!-- Formulaire de modification -->
-        <form id="editProfileForm" method="post" action="./account" style="display: none;">
-            <div class="input">
-                <label for="pseudo">Pseudo :</label>
-                <input type="text" id="pseudo" name="pseudo" value="<?php echo htmlspecialchars($user["pseudo"]); ?>"
-                    required>
-            </div>
-            <div class="input">
-                <label for="mail">Email :</label>
-                <input type="email" id="mail" name="mail" value="<?php echo htmlspecialchars($user["mail"]); ?>"
-                    required>
-            </div>
-            <input type="submit" value="Enregistrer" class="button">
-            <button type="button" id="cancelEditButton" class="button">Annuler</button>
-        </form>
     </div>
 </div>
 
