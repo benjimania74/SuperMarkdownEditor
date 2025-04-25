@@ -52,7 +52,25 @@
     border-image: initial;
 }
 
+#editProfileForm .button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: var(--mainHeader);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+}
+
 .profileDetails .button:hover {
+    background-color: var(--tertiary);
+}
+
+#editProfileForm .button:hover {
     background-color: var(--tertiary);
 }
 
