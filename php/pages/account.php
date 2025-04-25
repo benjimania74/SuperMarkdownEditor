@@ -1,13 +1,29 @@
 <?php
 $userId = $_SESSION["user"];
 $user = selectUser($conn, $userId);
-?>
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Traitement du formulaire de modification
+    $newPseudo = $_POST["pseudo"];
+    $newMail = $_POST["mail"];
+
+    // Met à jour les informations utilisateur dans la base de données
+    $updateSuccess = updateUser($conn, $userId, $newPseudo, $newMail);
+
+    if ($updateSuccess) {
+        // Recharge les informations utilisateur après la mise à jour
+        $user = selectUser($conn, $userId);
+        echo "<script>alert('Profil mis à jour avec succès');</script>";
+    } else {
+        echo "<script>alert('Erreur lors de la mise à jour du profil');</script>";
+    }
+}
+?>
 <head>
     <link rel="stylesheet" href="css/account.css">
     <script src="js/front/account.js" defer></script>
 </head>
-<div class="profileContainer">
+< class="profileContainer">
     <div class="profileHeader">
         <div class="profileInfo">
             <img src="./css/img/user_01.png" alt="Avatar" class="profileAvatar">
@@ -27,6 +43,19 @@ $user = selectUser($conn, $userId);
             </div>
         </div>
     </div>
+    <!-- Formulaire de modification -->
+    <form id="editProfileForm" method="post" action="./account.php" style="display: none;">
+        <div class="input">
+            <label for="pseudo">Pseudo :</label>
+            <input type="text" id="pseudo" name="pseudo" value="<?php echo htmlspecialchars($user["pseudo"]); ?>" required>
+        </div>
+        <div class="input">
+            <label for="mail">Email :</label>
+            <input type="email" id="mail" name="mail" value="<?php echo htmlspecialchars($user["mail"]); ?>" required>
+        </div>
+        <input type="submit" value="Enregistrer" class="button">
+        <button type="button" id="cancelEditButton" class="button">Annuler</button>
+    </form>
 
     <!-- à changé pour du dom qui génère en fonction du nombre de projet -->
     <section class="projectsSection">
