@@ -2,19 +2,17 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    font-family: Arial, sans-serif;
 }
 
 .profileHeader {
     background-color: var(--mainHeader);
     color: var(--secondary);
-    padding: 10px; /* Réduit l'espacement interne */
+    padding: 20px;
     border-radius: 10px;
     display: flex;
     align-items: center;
-    justify-content: center; /* Centre le contenu horizontalement */
-    margin: 20px auto; /* Centre horizontalement avec un espacement vertical */
-    max-width: 600px; /* Réduit la largeur maximale */
-    text-align: center; /* Centre le texte à l'intérieur */
+    margin-bottom: 40px;
 }
 
 .profileInfo {
@@ -54,25 +52,7 @@
     border-image: initial;
 }
 
-#editProfileForm .button {
-    padding: 10px 20px;
-    font-size: 1em;
-    background-color: var(--mainHeader);
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    border-width: 2px;
-    border-style: outset;
-    border-color: buttonborder;
-    border-image: initial;
-}
-
 .profileDetails .button:hover {
-    background-color: var(--tertiary);
-}
-
-#editProfileForm .button:hover {
     background-color: var(--tertiary);
 }
 
