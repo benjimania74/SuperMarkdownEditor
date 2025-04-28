@@ -10,7 +10,6 @@
     </div>
     <div class="resizer" classe="resizer"></div>
     <div id="outputMarkdown">
-        getDOM
     </div>
 </div>
 <button id="convertButton">Convertir</button>

@@ -1,11 +1,25 @@
+<?php
+if (isset($_POST["usernameLogin"]) && isset($_POST["passwordLogin"])) {
+    $t = connect($conn, $_POST["usernameLogin"], $_POST["passwordLogin"]);
+    if ($t["correct"]) {
+        $_SESSION["user"] = $t["id"];
+        header("Location: ./account");
+
+    } else {
+        echo "<script>alert('Identifiant ou mot de passe incorrect');</script>";
+    }
+}
+?>
+
 <head>
     <link rel="stylesheet" href="css/login.css">
     <script src="js/front/login.js" defer></script>
 </head>
+
 <div id="loginContainer">
     <div id="loginBox">
         <h1>Connexion</h1>
-        <form id="loginForm" method="post" action="./login.php">
+        <form id="loginForm" method="post" action="./login">
             <div class="input" id="identifiant">
                 <img src="./css/img/user_01.png" class="icone" alt="user">
                 <input type="identifiant" placeholder="Identifiant" name="usernameLogin">
@@ -13,7 +27,7 @@
             <div class="input" id="password">
                 <img src="./css/img/lock.png" class="icone" alt="lock">
                 <input type="password" placeholder="Mot de passe" name="passwordLogin" class="password">
-                <img src="./css/img/hide.png" class="toggle-eye" alt="hide">
+                <img src="./css/img/hide.png" class="toggleEye" alt="hide">
             </div>
             <input type="submit" value="Connexion" class="submitButton">
         </form>
@@ -30,7 +44,7 @@
             <div class="input" id="password">
                 <img src="./css/img/lock.png" class="icone" alt="lock">
                 <input type="password" placeholder="Mot de passe" name="passwordSignup" class="password">
-                <img src="./css/img/hide.png" class="toggle-eye" alt="hide">
+                <img src="./css/img/hide.png" class="toggleEye" alt="hide">
             </div>
             <input type="submit" value="Créer un compte" class="submitButton">
         </form>
