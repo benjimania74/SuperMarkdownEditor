@@ -1,3 +1,19 @@
+<?php
+session_start();
+include "./php/lib/env.php";
+include "./php/db/db_connect.php";
+include "./php/CRUD/file.crud.php";
+include "./php/CRUD/folder.crud.php";
+include "./php/CRUD/project.crud.php";
+include "./php/CRUD/user.crud.php";
+if (isset($_GET["action"])) {
+    $action = $_GET["action"];
+    if ($action == "disconnect") {
+        unset($_SESSION["action"]);
+        unset($_SESSION["admin"]);
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -15,7 +31,7 @@
     <script src="./js/front/front.js"></script>
 </head>
 
-<body>
+<body onload="add_message_bienvenue()">
     <?php
     include("html/header.html");
     ?>
@@ -23,7 +39,7 @@
     $page = isset($_GET['page']) && $_GET['page'] != "" ? basename($_GET['page']) : 'index';
 
     $filepath = "php/pages/" . $page . ".php";
-    
+
     if (file_exists($filepath)) {
         include($filepath);
     } else {
@@ -37,3 +53,6 @@
 
 
 </html>
+<?php
+include "./php/db/db_disconnect.php";
+?>

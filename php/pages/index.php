@@ -3,11 +3,6 @@
     <script src="js/front/index.js" defer></script>
 </head>
 <div class="container">
-
-
-
-
-
     <div class="container">
         <div class="hero">
             <div class="hero-content">
