@@ -36,4 +36,14 @@ function selectProject($conn, $id) {
         return "Error: " . mysqli_error($conn);
     }
 }
+
+function selectProjectsByUser($conn, $idUser) {
+    $sql = "SELECT * FROM `project` WHERE `idAuthor`=$idUser";
+    $ret = mysqli_query($conn, $sql);
+    if ($ret) {
+        return mysqli_fetch_all($ret, MYSQLI_ASSOC);
+    } else {
+        return "Error: " . mysqli_error($conn);
+    }
+}
 ?>
