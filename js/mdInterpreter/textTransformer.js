@@ -23,12 +23,41 @@ function textTransformer(text) {
             i++;
             continue;
         }
+        if(caracter == "\\") {
+            isEscaped = true;
+            i++;
+            continue;
+        }
 
         var step = 1;
 
-        var tagsLevel = Object.keys(tags).reverse();
+        var actualPortion = text.slice(i);
+        const singleTags = getSingleTags();
+
         var j = 0;
         var treated = false;
+        while(j < singleTags.length && !treated) {
+            var singleTag = singleTags[j];
+            var endsOfTag = getEndsOfSingleTagMatch(singleTag["pattern"], actualPortion);
+            if(endsOfTag != -1) {
+                var tag = actualPortion.slice(0, endsOfTag);
+                var treatedTag = singleTag.treat( actualPortion.slice(0, endsOfTag) );
+                if(treatedTag instanceof Element) {
+                    if(actualText != "") {
+                        generatedDOMList.push( generateSpan(actualText) );
+                        actualText = "";
+                    }
+
+                    generatedDOMList.push( treatedTag );
+                    step = endsOfTag;
+                    treated = true;
+                }
+            }
+            j++;
+        }
+
+        var tagsLevel = Object.keys(tags).reverse();
+        j = 0;
         while(j < tagsLevel.length && !treated) {
             var level = tagsLevel[j];
             var levelTags = tags[level];

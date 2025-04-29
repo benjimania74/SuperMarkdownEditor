@@ -118,7 +118,22 @@ addTag("__", (text) => {
 
 // CODE
 addTag("``", toCodeTag);
-addTag("``", toCodeTag);
+addTag("`", toCodeTag);
+
+/*
+    SINGLE TAGS
+    ------------------------------
+*/
+
+addSingleTag(/^\[[^\[\]\(\)]{1,}\]\([^\[\]\(\)]{1,}\)$/, (tag) => {
+    var text = tag.slice(1, tag.indexOf("]") - 1);
+    var link = tag.slice(tag.indexOf("(") + 1, tag.length - 1);
+
+    var a = document.createElement("a");
+    a.innerHTML = text;
+    a.setAttribute("href", link);
+    return a;
+});
 
 
 /*
