@@ -12,6 +12,9 @@ if (isset($_GET["fileID"])) {
     <script src="js/front/editor.js" defer></script>
     <script src="js/mdInterpreter/tokenizer.js" defer></script>
     <script src="js/mdInterpreter/domizer.js" defer></script>
+    <script src="js/mdInterpreter/textTransformer.js" defer></script>
+    <script src="js/mdInterpreter/modifiers.js" defer></script>
+    <script src="js/mdInterpreter/defaultBehavior.js" defer></script>
 </head>
 <div id="editorContainer">
     <div id="inputcontainer">
