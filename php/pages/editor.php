@@ -1,7 +1,7 @@
 <?php
 if (isset($_GET["fileID"])) {
     $fileID = $_GET["fileID"];
-    $file = selectFile($conn, $fileID);
+    $file = selectFile($conn, 6);
 } else {
     $file = ""; // Valeur par défaut si fileID n'est pas défini
 }
@@ -15,11 +15,11 @@ if (isset($_GET["fileID"])) {
 </head>
 <div id="editorContainer">
     <div id="inputcontainer">
-        <?php
-        printf("<textarea id="inputUser" placeholder="Écrivez ici votre texte en Markdown...">"$file"</textarea>")
+    <?php
+        printf("<textarea id='inputUser' placeholder='Écrivez ici votre texte en Markdown...'>".$file["content"]."</textarea>");
         ?>
     </div>
-    <div class="resizer" classe="resizer"></div>
+    <div class="resizer"></div>
     <div id="outputMarkdown">
     </div>
 </div>
