@@ -26,6 +26,12 @@ function toHorizontalBar() {
     return document.createElement("hr");
 }
 
+function toHighlight(value) {
+    var mark = document.createElement("mark");
+    textTransformerToParent(mark, value);
+    return mark;
+}
+
 function toQuote(value) {
     value = value.slice(2).replaceAll("\n> ", "\n");
     var quote = document.createElement("pre");
@@ -119,6 +125,10 @@ addTag("__", (text) => {
 // CODE
 addTag("``", toCodeTag);
 addTag("`", toCodeTag);
+
+// HIGHLIGH
+
+addTag("==", toHighlight);
 
 /*
     SINGLE TAGS
