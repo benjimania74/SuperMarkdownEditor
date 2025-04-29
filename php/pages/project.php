@@ -18,7 +18,11 @@ $projects = selectProjectsByUser($conn, $userId) ?? [];
     <script src="./js/front/project.js" defer></script>
 </head>
 
-<div id="projectListContainer" onload="renderFolder($project);">
-    <h2>Mes Folder</h2>
-    <ul id="folderList"></ul>
-</div>
+<section class="projectsSection"></section>
+<script>
+    const projects = <?php echo json_encode($projects); ?>;
+    window.addEventListener("DOMContentLoaded", () => {
+        console.log("Projets reçus :", projects);
+        folderPoster(projects);
+    });
+</script>

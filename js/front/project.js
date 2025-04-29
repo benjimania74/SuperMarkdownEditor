@@ -13,7 +13,7 @@ function folderView(folder){
     a.innerHTML = "Ouvrir";
     div.appendChild(a);
     b.className = "button";
-    b.href = "editFolder?folderId=" + folder["id"];
+    b.href = "editfiles?folderId=" + folder["id"];
     b.innerHTML = "Manage";
     div.appendChild(b);
     return div;
