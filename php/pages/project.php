@@ -4,9 +4,12 @@ if (!isset($userId)) {
     header("Location: ./login");
     exit;
 }
+if (!isset($_GET["projectID"])) {
+    header("Location: ./manage_projects");
+    exit;
+}
 $projects = selectProjectsByUser($conn, $userId) ?? [];
 ?>
-
 <head>
     <link rel="stylesheet" href="css/project.css">
     <script>
@@ -15,7 +18,7 @@ $projects = selectProjectsByUser($conn, $userId) ?? [];
     <script src="./js/front/project.js" defer></script>
 </head>
 
-<div id="projectListContainer" onload="renderProjects($project);">
-    <h2>Mes Projets</h2>
-    <ul id="projectList"></ul>
+<div id="projectListContainer" onload="renderFolder($project);">
+    <h2>Mes Folder</h2>
+    <ul id="folderList"></ul>
 </div>
