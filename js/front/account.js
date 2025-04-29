@@ -1,4 +1,19 @@
-onload = projectPoster;
+document.addEventListener("DOMContentLoaded", () => {
+    const editButton = document.getElementById("editProfileButton");
+    const editForm = document.getElementById("editProfileForm");
+    const cancelButton = document.getElementById("cancelEditButton");
+    const profileDetails = document.querySelector(".profileDetails");
+
+    editButton.addEventListener("click", () => {
+        profileDetails.style.display = "none";
+        editForm.style.display = "block";
+    });
+
+    cancelButton.addEventListener("click", () => {
+        editForm.style.display = "none";
+        profileDetails.style.display = "block";
+    });
+});
 
 function projectView(project) {
     const div = document.createElement("div");

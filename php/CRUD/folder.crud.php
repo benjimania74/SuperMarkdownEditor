@@ -36,4 +36,14 @@ function selectFolder($conn, $id) {
         return "Error: " . mysqli_error($conn);
     }
 }
+
+function selectFoldersByProject($conn, $idProject) {
+    $sql = "SELECT * FROM `folder` WHERE `idProject`=$idProject";
+    $ret = mysqli_query($conn, $sql);
+    if ($ret) {
+        return mysqli_fetch_all($ret, MYSQLI_ASSOC);
+    } else {
+        return "Error: " . mysqli_error($conn);
+    }
+}
 ?>

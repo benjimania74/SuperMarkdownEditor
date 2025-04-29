@@ -36,4 +36,14 @@ function selectFile($conn, $id) {
         return "Error: " . mysqli_error($conn);
     }
 }
+
+function selectFilesByFolder($conn, $idFolder) {
+    $sql = "SELECT * FROM `file` WHERE `idFolder`=$idFolder";
+    $ret = mysqli_query($conn, $sql);
+    if ($ret) {
+        return mysqli_fetch_all($ret, MYSQLI_ASSOC);
+    } else {
+        return "Error: " . mysqli_error($conn);
+    }
+}
 ?>

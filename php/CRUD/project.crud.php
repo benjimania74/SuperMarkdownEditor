@@ -37,6 +37,16 @@ function selectProject($conn, $id) {
     }
 }
 
+function selectProjectsByUser($conn, $idUser) {
+    $sql = "SELECT * FROM `project` WHERE `idAuthor`=$idUser";
+    $ret = mysqli_query($conn, $sql);
+    if ($ret) {
+        return mysqli_fetch_all($ret, MYSQLI_ASSOC);
+    } else {
+        return "Error: " . mysqli_error($conn);
+    }
+}
+
 function addPublicProject($conn, $id, $public) {
     $sql = "UPDATE `project` SET `public`='$public' WHERE `id`=$id";
     $ret = mysqli_query($conn, $sql);
