@@ -1,3 +1,3 @@
 <?php
-echo getHTMLPage("index.php");
+echo getHTMLPage("index.html");
 ?>
