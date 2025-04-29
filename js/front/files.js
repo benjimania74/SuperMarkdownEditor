@@ -2,20 +2,15 @@ function fileView(file){
     const div = document.createElement("div");
     const h3 = document.createElement("h3");
     const a = document.createElement("a");
-    const b = document.createElement("a");
 
     div.className = "projectCard";
     div.id = "Fichier "+ file["id"];
     h3.innerHTML = file["nameFile"];
     div.appendChild(h3);
     a.className = "button";
-    a.href = "";
+    a.href = "editor?fileID=" + file["id"];
     a.innerHTML = "Ouvrir";
     div.appendChild(a);
-    b.className = "button";
-    b.href = "";
-    b.innerHTML = "Manage";
-    div.appendChild(b);
     return div;
 }
 

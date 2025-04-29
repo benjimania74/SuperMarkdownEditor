@@ -4,16 +4,16 @@ function folderView(folder){
     const a = document.createElement("a");
     const b = document.createElement("a");
 
-    div.className = "projectCard";
+    div.className = "folderList";
     div.id = "Dossier "+ folder["id"];
     h3.innerHTML = folder["nameFolder"];
     div.appendChild(h3);
     a.className = "button";
-    a.href = "";
+    a.href = "files?folderId=" + folder["id"];
     a.innerHTML = "Ouvrir";
     div.appendChild(a);
     b.className = "button";
-    b.href = "";
+    b.href = "editFolder?folderId=" + folder["id"];
     b.innerHTML = "Manage";
     div.appendChild(b);
     return div;
