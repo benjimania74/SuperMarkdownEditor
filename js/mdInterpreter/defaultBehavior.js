@@ -125,6 +125,7 @@ addTag("`", toCodeTag);
     ------------------------------
 */
 
+// LINKS
 addSingleTag(/^\[[^\[\]\(\)]{1,}\]\([^\[\]\(\)]{1,}\)$/, (tag) => {
     var text = tag.slice(1, tag.indexOf("]") - 1);
     var link = tag.slice(tag.indexOf("(") + 1, tag.length - 1);
@@ -135,6 +136,18 @@ addSingleTag(/^\[[^\[\]\(\)]{1,}\]\([^\[\]\(\)]{1,}\)$/, (tag) => {
     return a;
 });
 
+// IMAGES
+addSingleTag(/^\!\[[^\[\]\(\)]{1,}\]\([^\[\]\(\)]{1,}\)$/, (tag) => {
+    var alternativText = tag.slice(1, tag.indexOf("]") - 1);
+    var image = tag.slice(tag.indexOf("(") + 1, tag.length - 1);
+
+    var img = document.createElement("img");
+
+    img.setAttribute("alt", alternativText);
+    img.setAttribute("src", image);
+
+    return img;
+});
 
 /*
     STRUCTURES
