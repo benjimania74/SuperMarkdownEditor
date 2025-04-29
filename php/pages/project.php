@@ -18,7 +18,7 @@ $projects = selectProjectsByUser($conn, $userId) ?? [];
     <script src="./js/front/project.js" defer></script>
 </head>
 
-<div id="projectListContainer" onload="renderProjects($project);">
-    <h2>Mes Projets</h2>
-    <ul id="projectList"></ul>
+<div id="projectListContainer" onload="renderFolder($project);">
+    <h2>Mes Folder</h2>
+    <ul id="folderList"></ul>
 </div>
