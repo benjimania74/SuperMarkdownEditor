@@ -1,4 +1,5 @@
 <?php
     $pizza = selectFile($conn, 6);
-    printf($pizza["content"]);
+    printf("<textarea >".$pizza["content"]."</textarea>");
 ?>
+
