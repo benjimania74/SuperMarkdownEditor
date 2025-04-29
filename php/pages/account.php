@@ -56,27 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </form>
         </div>
     </div>
-    <!-- à changé pour du dom qui génère en fonction du nombre de projet -->
-   <!-- <section class="projectsSection">
-        <h2>Mes Projets</h2>
-        <div class="projectsList">
-            <div class="projectCard">
-                <h3>Projet 1</h3>
-                <p>Dernière modification : 12/04/2025</p>
-                <a href="" class="button">Ouvrir</a>
-            </div>
-            <div class="projectCard">
-                <h3>Projet 2</h3>
-                <p>Dernière modification : 10/04/2025</p>
-                <a href="" class="button">Ouvrir</a>
-            </div>
-            <div class="projectCard">
-                <h3>Projet 3</h3>
-                <p>Dernière modification : 08/04/2025</p>
-                <a href="" class="button">Ouvrir</a>
-            </div>
-        </div>
-    </section> -->
 
 <script>
     const projects = <?php echo json_encode(selectProjectsByUser($conn, $userId)); ?>;
