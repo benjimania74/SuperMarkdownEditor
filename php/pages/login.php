@@ -32,7 +32,7 @@ if (isset($_POST["usernameLogin"]) && isset($_POST["passwordLogin"])) {
             <input type="submit" value="Connexion" class="submitButton">
         </form>
 
-        <form id="signupForm" method="post" action="./signup.php" style="display: none;">
+        <form id="signupForm" method="post" action="./login" style="display: none;">
             <div class="input" id="identifiant">
                 <img src="./css/img/user_01.png" class="icone" alt="user">
                 <input type="text" placeholder="Identifiant" name="usernameSignup">

@@ -20,7 +20,7 @@ function renderProjects(projects) {
         openButton.textContent = "Ouvrir";
         openButton.className = "open-button";
         openButton.addEventListener("click", () => {
-            window.location.href = `./editor?project=${project.id}`;
+            window.location.href = `./editor?fileID=${project.id}`;
         });
 
         // Bouton pour modifier le projet
