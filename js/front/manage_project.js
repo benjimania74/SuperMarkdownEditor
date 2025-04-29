@@ -1,43 +1,38 @@
-const projectList = document.getElementById("projectList");
+function projectPoster(projects) {
+    const section = document.querySelector(".projectsSection");
+    section.innerHTML = "";
 
-function renderProjects(projects) {
-    if (!Array.isArray(projects) || projects.length === 0) {
-        projectList.innerHTML = "<p>Aucun projet trouvé.</p>";
-        return;
+    const h2 = document.createElement("h2");
+    h2.textContent = "Mes projets";
+    section.appendChild(h2);
+
+    const projectList = document.createElement("div");
+    
+    for (let i in projects) {
+        projectList.appendChild(projectView(projects[i]));
     }
 
-    projectList.innerHTML = "";
 
-    projects.forEach(project => {
-        const listItem = document.createElement("li");
-        listItem.className = "project-item";
-
-        const projectName = document.createElement("span");
-        projectName.textContent = project.name;
-        projectName.className = "project-name";
-
-        const openButton = document.createElement("button");
-        openButton.textContent = "Ouvrir";
-        openButton.className = "open-button";
-        openButton.addEventListener("click", () => {
-            window.location.href = `./editor?fileID=${project.id}`;
-        });
-
-        // Bouton pour modifier le projet
-        const editButton = document.createElement("button");
-        editButton.textContent = "Modifier";
-        editButton.className = "edit-button";
-        editButton.addEventListener("click", () => {
-            window.location.href = `./editProject?fileID=${project.id}`;
-        });
-
-        listItem.appendChild(projectName);
-        listItem.appendChild(openButton);
-        listItem.appendChild(editButton);
-
-        projectList.appendChild(listItem);
-    });
+    section.appendChild(projectList);
 }
 
-// Appeler la fonction pour afficher les projets
-renderProjects(projects);
+function projectView(project) {
+    const div = document.createElement("div");
+    const h3 = document.createElement("h3");
+    const a = document.createElement("a");
+    const b = document.createElement("a");
+
+    div.className = "projectCard";
+    div.id = "projet "+ project["id"];
+    h3.innerHTML = project["nameProject"];
+    div.appendChild(h3);
+    a.className = "button";
+    a.href = "project?projectId=" + project["id"];
+    a.innerHTML = "Ouvrir";
+    div.appendChild(a);
+    b.className = "button";
+    b.href = "editProject?projectId=" + project["id"];
+    b.innerHTML = "Manage";
+    div.appendChild(b);
+    return div;
+}
