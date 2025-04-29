@@ -26,6 +26,12 @@ function toHorizontalBar() {
     return document.createElement("hr");
 }
 
+function toHighlight(value) {
+    var mark = document.createElement("mark");
+    textTransformerToParent(mark, value);
+    return mark;
+}
+
 function toQuote(value) {
     value = value.slice(2).replaceAll("\n> ", "\n");
     var quote = document.createElement("pre");
@@ -120,11 +126,16 @@ addTag("__", (text) => {
 addTag("``", toCodeTag);
 addTag("`", toCodeTag);
 
+// HIGHLIGH
+
+addTag("==", toHighlight);
+
 /*
     SINGLE TAGS
     ------------------------------
 */
 
+// LINKS
 addSingleTag(/^\[[^\[\]\(\)]{1,}\]\([^\[\]\(\)]{1,}\)$/, (tag) => {
     var text = tag.slice(1, tag.indexOf("]") - 1);
     var link = tag.slice(tag.indexOf("(") + 1, tag.length - 1);
@@ -135,6 +146,18 @@ addSingleTag(/^\[[^\[\]\(\)]{1,}\]\([^\[\]\(\)]{1,}\)$/, (tag) => {
     return a;
 });
 
+// IMAGES
+addSingleTag(/^\!\[[^\[\]\(\)]{1,}\]\([^\[\]\(\)]{1,}\)$/, (tag) => {
+    var alternativText = tag.slice(1, tag.indexOf("]") - 1);
+    var image = tag.slice(tag.indexOf("(") + 1, tag.length - 1);
+
+    var img = document.createElement("img");
+
+    img.setAttribute("alt", alternativText);
+    img.setAttribute("src", image);
+
+    return img;
+});
 
 /*
     STRUCTURES
