@@ -9,8 +9,8 @@ function createFile($conn, $nameFile, $idFolder, $content,$type) {
     return $ret;
 }
 
-function updateFile($conn, $id, $nameFile, $idFolder, $content, $type) {
-    $sql = "UPDATE `file` SET `nameFile`='$nameFile', `idFolder`='$idFolder', `content`='$content',`type`='$type' WHERE `id`=$id";
+function updateFileContent($conn, $id, $content) {
+    $sql = "UPDATE `file` SET `content`='$content' WHERE `id`=$id";
     $ret = mysqli_query($conn, $sql);
     if (!$ret) {
         return "Error: " . mysqli_error($conn);

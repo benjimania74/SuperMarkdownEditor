@@ -1,9 +1,14 @@
 <?php
 if (isset($_GET["fileID"])) {
     $fileID = $_GET["fileID"];
-    $file = selectFile($conn, 6);
+    $file = selectFile($conn, $fileID);
 } else {
     $file = ""; // Valeur par défaut si fileID n'est pas défini
+}
+if (isset($_POST["content"]) && ($_POST["id"])) {
+    $content = $_POST["content"];
+    $id = $_POST["id"];
+    updateFileContent($conn, $id, $content, );
 }
 ?>
 
@@ -19,7 +24,7 @@ if (isset($_GET["fileID"])) {
 <div id="editorContainer">
     <div id="inputcontainer">
     <?php
-        printf("<textarea id='inputUser' placeholder='Écrivez ici votre texte en Markdown...'>".$file["content"]."</textarea>");
+        printf("<textarea class='inputUser' id=".$_GET["fileID"]."placeholder='Écrivez ici votre texte en Markdown...'>".$file["content"]."</textarea>");
         ?>
     </div>
     <div class="resizer"></div>
@@ -27,3 +32,4 @@ if (isset($_GET["fileID"])) {
     </div>
 </div>
 <button id="convertButton">Convertir</button>
+<button id="saveButton">Sauvegarder</button>

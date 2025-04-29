@@ -51,7 +51,8 @@
     background-color: #2B2A3F;
     width: 50%;
 }
-#inputUser {
+
+.inputUser {
     min-height: 400px;
     resize: none;
     width: 100%;
