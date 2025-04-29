@@ -1,0 +1,53 @@
+#projectListContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+#projectList {
+    list-style: none;
+    padding: 0;
+}
+
+.project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.project-name {
+    font-weight: bold;
+}
+
+.open-button, .edit-button {
+    padding: 5px 10px;
+    font-size: 0.9em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.open-button {
+    background-color: var(--tertiary);
+    color: white;
+}
+
+.open-button:hover {
+    background-color: var(--secondary);
+}
+
+.edit-button {
+    background-color: var(--mainHeader);
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: var(--secondary);
+}
