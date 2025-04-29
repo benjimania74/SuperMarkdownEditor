@@ -1,7 +1,7 @@
 <?php
 
-function createProject($conn, $nameProject, $idAuthor) {
-    $sql = "INSERT INTO `project`(`nameProject`, `idAuthor`) VALUES ('$nameProject', '$idAuthor')";
+function createProject($conn, $nameProject, $idAuthor, $public) {
+    $sql = "INSERT INTO `project`(`nameProject`, `idAuthor`,`public`) VALUES ('$nameProject', '$idAuthor','$public')";
     $ret = mysqli_query($conn, $sql);
     if (!$ret) {
         return "Error: " . mysqli_error($conn);
@@ -9,8 +9,8 @@ function createProject($conn, $nameProject, $idAuthor) {
     return $ret;
 }
 
-function updateProject($conn, $id, $nameProject, $idAuthor) {
-    $sql = "UPDATE `project` SET `nameProject`='$nameProject', `idAuthor`='$idAuthor' WHERE `id`=$id";
+function updateProject($conn, $id, $nameProject, $idAuthor, $public) {
+    $sql = "UPDATE `project` SET `nameProject`='$nameProject', `idAuthor`='$idAuthor', `public`='$public' WHERE `id`=$id";
     $ret = mysqli_query($conn, $sql);
     if (!$ret) {
         return "Error: " . mysqli_error($conn);
@@ -36,4 +36,14 @@ function selectProject($conn, $id) {
         return "Error: " . mysqli_error($conn);
     }
 }
+
+function addPublicProject($conn, $id, $public) {
+    $sql = "UPDATE `project` SET `public`='$public' WHERE `id`=$id";
+    $ret = mysqli_query($conn, $sql);
+    if (!$ret) {
+        return "Error: " . mysqli_error($conn);
+    }
+    return $ret;
+}
+
 ?>

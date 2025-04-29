@@ -19,7 +19,7 @@ $user = selectUser($conn, $userId);
                 </h1>
                 <p id="profileEmail">
                     <?php
-                    echo($user["mail"])
+                    echo ($user["mail"])
                     ?>
                 </p>
                 <button id="editProfileButton" class="button">Modifier le profil</button>
@@ -28,7 +28,7 @@ $user = selectUser($conn, $userId);
     </div>
 
     <!-- à changé pour du dom qui génère en fonction du nombre de projet -->
-    <section class="projectsSection">
+   <!-- <section class="projectsSection">
         <h2>Mes Projets</h2>
         <div class="projectsList">
             <div class="projectCard">
@@ -47,5 +47,10 @@ $user = selectUser($conn, $userId);
                 <a href="" class="button">Ouvrir</a>
             </div>
         </div>
-    </section>
+    </section> -->
+
+<script>
+    const projects = <?php echo json_encode(selectProjectByUser($conn,$userId)); ?>;
+    projectPoster(projects);
+</script>
 </div>

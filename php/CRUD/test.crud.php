@@ -6,6 +6,7 @@
 
 <body>
     <?php
+    include("../lib/env.php");
     include("../db/db_connect.php");
     include("user.crud.php");
     include("project.crud.php");
@@ -110,7 +111,7 @@
     ) {
         $nameProject = $_POST["nameProject"];
         $idAuthor = $_POST["idAuthor"];
-        createProject($conn, $nameProject, $idAuthor);
+        createProject($conn, $nameProject, $idAuthor, $public);
     }
     ?>
 
@@ -131,7 +132,7 @@
         $id = $_POST["id"];
         $nameProject = $_POST["nameProject"];
         $idAuthor = $_POST["idAuthor"];
-        updateProject($conn, $id, $nameProject, $idAuthor);
+        updateProject($conn, $id, $nameProject, $idAuthor, $public);
     }
     ?>
 
@@ -158,6 +159,24 @@
     if (isset($_POST["id"])) {
         $id = $_POST["id"];
         selectProject($conn, $id);
+    }
+    ?>
+
+    <!-- Project Add Public -->
+    <form method="post" action="test.crud.php">
+        <h2>Project Add Public</h2>
+        id <input type="int" name="id">
+        public <input type="text" name="public">
+        <input type="submit" value="Envoyer">
+    </form>
+    <?php
+    if (
+        isset($_POST["id"]) &&
+        isset($_POST["public"])
+    ) {
+        $id = $_POST["id"];
+        $public = $_POST["public"];
+        addPublicProject($conn, $id, $public);
     }
     ?>
 
