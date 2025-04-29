@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <head>
     <link rel="stylesheet" href="css/account.css">
-    <script src="js/front/account.js" ></script> <!-- update src -->
+    <script src="js/front/account.js" defer></script>
 </head>
 <div class="profileContainer">
     <div class="profileHeader">
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </form>
         </div>
     </div>
-
+    
 <script>
     const projects = <?php echo json_encode(selectProjectsByUser($conn, $userId)); ?>;
     console.log("Projets reçus :", projects);
