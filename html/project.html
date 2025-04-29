@@ -1,0 +1,10 @@
+<link rel="stylesheet" href="css/project.css">
+<script>
+    const projects = $JSON_PROJECTS$;
+    window.addEventListener("DOMContentLoaded", () => {
+        console.log("Projets reçus :", projects);
+        folderPoster(projects);
+    });
+</script>
+
+<section class="projectsSection"></section>

@@ -6,6 +6,7 @@ include "./php/CRUD/file.crud.php";
 include "./php/CRUD/folder.crud.php";
 include "./php/CRUD/project.crud.php";
 include "./php/CRUD/user.crud.php";
+include "./php/lib/pageManager.php";
 if (isset($_GET["action"])) {
     $action = $_GET["action"];
     if ($action == "disconnect") {

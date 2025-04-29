@@ -55,3 +55,5 @@ function projectPoster(projects) {
     var pc = document.querySelector(".profileContainer");
     pc.appendChild(section);
 }
+
+projectPoster(projects);

@@ -1,0 +1,34 @@
+
+<link rel="stylesheet" href="css/account.css">
+<script src="js/front/account.js" defer></script> <!-- update src -->
+<script>
+    const projects = $JSON_PROJECTS$;
+</script>
+
+<div class="profileContainer">
+    <div class="profileHeader">
+        <div class="profileInfo">
+            <img src="./css/img/user_01.png" alt="Avatar" class="profileAvatar">
+            <div class="profileDetails">
+                <h1 id="profileName">$PSEUDO$</h1>
+                <p id="profileEmail">$MAIL$</p>
+                <button id="editProfileButton" class="button">Modifier le profil</button>
+                <a id="logOut" href="./logout" class="button">Déconnexion</a>
+            </div>
+            <form id="editProfileForm" method="post" action="./account" style="display: none;">
+                <div class="input">
+                    <label for="pseudo">Pseudo :</label>
+                    <input type="text" id="pseudo" name="pseudo"
+                        value="$PSEUDO$" required>
+                </div>
+                <div class="input">
+                    <label for="mail">Email :</label>
+                    <input type="email" id="mail" name="mail" value="$MAIL$"
+                        required>
+                </div>
+                <input type="submit" value="Enregistrer" class="button">
+                <button type="button" id="cancelEditButton" class="button">Annuler</button>
+            </form>
+        </div>
+    </div>
+</div>
