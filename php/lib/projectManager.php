@@ -37,6 +37,14 @@ function createNewProject(mysqli $conn, int $userID, string $name, bool $isPubli
     return $projectID;
 }
 
+function getProjectFiles(mysqli $conn, int $projectID) {
+    $files = selectFilesByProject($conn, $projectID);
+    for($i = 0 ; $i < count($files) ; $i++) {
+        $files[$i]["content"] = decodeDecrompress( $files[$i]["content"] );
+    }
+    return $files;
+}
+
 function getScripts(mysqli $conn, int $projectID) {
     $files = selectScriptsByProject($conn, $projectID);
     for($i = 0 ; $i < count($files) ; $i++) {
