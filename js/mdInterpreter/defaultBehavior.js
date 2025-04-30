@@ -137,7 +137,7 @@ addTag("==", toHighlight);
 
 // LINKS
 addSingleTag(/^\[[^\[\]\(\)]{1,}\]\([^\[\]\(\)]{1,}\)$/, (tag) => {
-    var text = tag.slice(1, tag.indexOf("]") - 1);
+    var text = tag.slice(1, tag.indexOf("]"));
     var link = tag.slice(tag.indexOf("(") + 1, tag.length - 1);
 
     var a = document.createElement("a");
@@ -148,8 +148,8 @@ addSingleTag(/^\[[^\[\]\(\)]{1,}\]\([^\[\]\(\)]{1,}\)$/, (tag) => {
 
 // IMAGES
 addSingleTag(/^\!\[[^\[\]\(\)]{1,}\]\([^\[\]\(\)]{1,}\)$/, (tag) => {
-    var alternativText = tag.slice(1, tag.indexOf("]") - 1);
-    var image = tag.slice(tag.indexOf("(") + 1, tag.length - 1);
+    var alternativText = tag.slice(1, tag.indexOf("]"));
+    var image = tag.slice(tag.indexOf("(") + 1, tag.length);
 
     var img = document.createElement("img");
 
