@@ -148,8 +148,8 @@ addSingleTag(/^\[[^\[\]\(\)]{1,}\]\([^\[\]\(\)]{1,}\)$/, (tag) => {
 
 // IMAGES
 addSingleTag(/^\!\[[^\[\]\(\)]{1,}\]\([^\[\]\(\)]{1,}\)$/, (tag) => {
-    var alternativText = tag.slice(1, tag.indexOf("]"));
-    var image = tag.slice(tag.indexOf("(") + 1, tag.length);
+    var alternativText = tag.slice(2, tag.indexOf("]"));
+    var image = tag.slice(tag.indexOf("(") + 1, tag.length - 1);
 
     var img = document.createElement("img");
 
@@ -158,6 +158,7 @@ addSingleTag(/^\!\[[^\[\]\(\)]{1,}\]\([^\[\]\(\)]{1,}\)$/, (tag) => {
 
     return img;
 });
+
 
 /*
     STRUCTURES
@@ -174,7 +175,7 @@ addStructure(/^#{1,6}$/, false, toTitle);
 addStructure(/^-{3}$/, false, toHorizontalBar);
 
 // QUOTE
-addStructure(">", true, toQuote); // TODO -> add the possibility of a personnal quote type [it's not that hard] : /^!\[[a-z]{1,}\]$/ on first line
+addStructure(">", true, toQuote);
 
 
 /*

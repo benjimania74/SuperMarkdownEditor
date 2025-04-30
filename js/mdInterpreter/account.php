@@ -16,15 +16,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "<script>alert('Erreur lors de la mise à jour du profil');</script>";
     }
 }
-?>
 
-<head>
-    <link rel="stylesheet" href="css/files.css">
-    <script src="js/front/files.js"></script> 
-</head>
-<div class="profileContainer">
-    <script>
-        const files = <?php echo json_encode(selectFilesByProject($conn,$idProject)); ?>;
-        filePoster(files);
-    </script>
-</div>
+$replaceMap = [
+    "PSEUDO" => $user["pseudo"],
+    "MAIL" => $user["mail"],
+    "JSON_PROJECTS" => json_encode(selectProjectsByUser($conn, $userId))
+];
+
+$pageContent = getHTMLPage("account.html");
+echo replaceMap($pageContent, $replaceMap);
+
+?>

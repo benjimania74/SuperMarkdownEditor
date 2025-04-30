@@ -8,7 +8,7 @@ if (isset($_GET["fileID"])) {
 if (isset($_POST["content"]) && ($_POST["id"])) {
     $content = $_POST["content"];
     $id = $_POST["id"];
-    updateFileContent($conn, $id, $content, );
+    updateFileContent($conn, $id, $content);
 }
 
 $replaceMap = [
