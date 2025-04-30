@@ -14,7 +14,6 @@ if (isset($_GET["action"])) {
     }
 }
 $page = isset($_GET['page']) && $_GET['page'] != "" ? basename($_GET['page']) : 'index';
-echo $page;
 if (isset($_POST["strict"])){
     include($page);
     exit(0);

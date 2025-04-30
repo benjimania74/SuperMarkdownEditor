@@ -2,6 +2,16 @@
     box-sizing: border-box;
 }
 
+
+
+#buttonContainer {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 1rem; 
+    margin: 1rem auto;;
+}
+
 .buttonEditor{
     display: block;
     margin: 1rem auto;

@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="./css/templates.css">
+<script src="./js/front/templates.js" defer></script>
+<script src="js/mdInterpreter/tokenizer.js" defer></script>
+<script src="js/mdInterpreter/domizer.js" defer></script>
+<script src="js/mdInterpreter/textTransformer.js" defer></script>
+<script src="js/mdInterpreter/modifiers.js" defer></script>
+
+
+<h1>Choisissez un Template</h1>
+<section class="filesSection">
+
+</section>
+<script>
+    const files = $JSON_FILES$;
+    window.addEventListener("DOMContentLoaded", () => {
+        console.log("Projets reçus :", files);
+        filePoster(files);
+    });
+</script>

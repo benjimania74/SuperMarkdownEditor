@@ -6,7 +6,6 @@ if (isset($_GET["fileID"])) {
 } else {
     $file = ""; // Valeur par défaut si fileID n'est pas défini
 }
-print_r($_POST);
 if (isset($_POST["content"]) && ($_POST["id"])) {
     $content = compressEncode($_POST["content"]);
     $id = $_POST["id"];
