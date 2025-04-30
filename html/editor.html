@@ -3,6 +3,10 @@
 <script src="js/mdInterpreter/domizer.js" defer></script>
 <script src="js/mdInterpreter/textTransformer.js" defer></script>
 <script src="js/mdInterpreter/modifiers.js" defer></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 <link rel="stylesheet" href="css/editor.css">
 <script>
 var scripts = $JSON_SCRIPT$;
@@ -21,4 +25,6 @@ var scripts = $JSON_SCRIPT$;
 <div id="buttonContainer">
     <button id="convertButton" class="buttonEditor">Convertir</button>
     <button id="saveButton" class="buttonEditor">Sauvegarder</button>
+    <button id="downloadPDFButton" class="buttonEditor">Télécharger PDF</button>
+    <button id="downloadHTMLButton" class="buttonEditor">Télécharger HTML</button>
 </div>

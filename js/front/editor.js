@@ -81,4 +81,33 @@ document.addEventListener("readystatechange", () => {
     insertScript();
 });
 
-//insertScript();
+const downloadPDFButton = document.getElementById("downloadPDFButton");
+const downloadHTMLButton = document.getElementById("downloadHTMLButton");
+
+downloadPDFButton.addEventListener("click", () => {
+    updateDOM(textarea.value);
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.html(outputMarkdown.firstChild, {
+        callback: function (doc) {
+          doc.save("markdown.pdf");
+        },
+        x: 10,
+        y: 10
+      });
+});
+
+downloadHTMLButton.addEventListener("click", () => {
+    updateDOM(textarea.value);
+    const html = outputMarkdown.firstChild.innerHTML;
+    const blob = new Blob([html], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "markdown.html";
+    a.click();
+
+    URL.revokeObjectURL(url);
+});
