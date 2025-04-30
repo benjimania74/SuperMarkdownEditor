@@ -24,7 +24,8 @@ function projectPoster(projects) {
     section.appendChild(h2);
 
     const projectList = document.createElement("div");
-    
+    projectList.className = "projectsList";
+
     for (let i in projects) {
         projectList.appendChild(projectView(projects[i]));
     }
@@ -40,7 +41,7 @@ function projectView(project) {
     const b = document.createElement("a");
 
     div.className = "projectCard";
-    div.id = "projet "+ project["id"];
+    div.id = "projet " + project["id"];
     h3.innerHTML = project["nameProject"];
     div.appendChild(h3);
     a.className = "button";
