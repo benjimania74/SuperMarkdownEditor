@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-#convertButton{
+.buttonEditor{
     display: block;
     margin: 1rem auto;
     background-color: var(--tertiary);
@@ -13,7 +13,7 @@
     transition: background-color 0.3s ease;
 }
 
-#convertButton:hover {
+.buttonEditor:hover {
     background-color: var(--secondary);
 }
 
