@@ -11,12 +11,14 @@ var scripts = $JSON_SCRIPT$;
 
 <div id="editorContainer">
     <div id="inputcontainer">
-        <textarea class="inputUser" id="$FILE_ID$" placeholder="Écrivez ici votre texte en Markdown...">$FILE_CONTENT$</textarea>
+        <textarea class="inputUser" id="$FILE_ID$"
+            placeholder="Écrivez ici votre texte en Markdown...">$FILE_CONTENT$</textarea>
     </div>
     <div class="resizer"></div>
     <div id="outputMarkdown">
     </div>
 </div>
-
-<button id="convertButton" class="buttonEditor">Convertir</button>
-<button id="saveButton" class="buttonEditor">Sauvegarder</button>
+<div id="buttonContainer">
+    <button id="convertButton" class="buttonEditor">Convertir</button>
+    <button id="saveButton" class="buttonEditor">Sauvegarder</button>
+</div>
