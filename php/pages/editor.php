@@ -1,23 +1,28 @@
 <?php
+
+include __DIR__ . "/../lib/projectManager.php";
+
 if (isset($_GET["fileID"])) {
     $fileID = $_GET["fileID"];
     $file = selectFile($conn, $fileID);
 } else {
     $file = ""; // Valeur par défaut si fileID n'est pas défini
 }
-if (isset($_POST["content"]) && ($_POST["id"])) {
-    $content = $_POST["content"];
-    $id = $_POST["id"];
-    updateFileContent($conn, $id, $content);
-    exit(0);
-}
+
+$postJSON = file_get_contents("php://input");
+$postContent = $postJSON == "" ? [] : json_decode($postJSON, true);
+
+if (isset($postContent["content"]) && ($postContent["id"])) {
+    $content = $postContent["content"];
+    $id = $postContent["id"];
+    updateFile($conn, $id, $content);
+} 
 
 $replaceMap = [
     "FILE_ID" => $_GET["fileID"],
-    "FILE_CONTENT" => $file["content"]
+    "FILE_CONTENT" => decodeDecrompress($file["content"])
 ];
 
 $pageContent = getHTMLPage("editor.html");
 echo replaceMap($pageContent, $replaceMap);
-
 ?>

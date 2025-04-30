@@ -26,11 +26,4 @@ $pageContent = getHTMLPage("newProject.html");
 
 print $pageContent;
 
-/*createNewProject(
-    $conn,
-    36,
-    "bonjour !",
-    false
-);*/
-
 ?>

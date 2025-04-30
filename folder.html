@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="css/folder.css">
+<script src="js/front/folder.js" defer></script>
+
+<section class="filesSection">
+
+</section>
+<script>
+    const projects = $JSON_PROJECTS$;
+    window.addEventListener("DOMContentLoaded", () => {
+        console.log("Projets reçus :", projects);
+        filePoster(projects);
+    });
+</script>

@@ -37,12 +37,16 @@ function createNewProject(mysqli $conn, int $userID, string $name, bool $isPubli
     return $projectID;
 }
 
+function updateFile(mysqli $conn, int $fileID, string $content) {
+    updateFileContent($conn, $fileID, compressEncode($content));
+}
+
 function compressEncode(string $value) {
     return base64_encode( gzcompress($value,9) );
 }
 
 function decodeDecrompress(string $value) {
-    return gzdecode( base64_decode($value) );
+    return gzuncompress( base64_decode($value) );
 }
 
 ?>

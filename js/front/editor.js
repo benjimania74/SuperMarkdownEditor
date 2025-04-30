@@ -52,15 +52,18 @@ function updateDOM(md) {
 
 const saveButton = document.getElementById('saveButton');
 
-saveButton.addEventListener('click', function () {
+saveButton.addEventListener('click', async function () {
     const md = textarea.value;
     const id = textarea.id;
-    async function postData(url = "editor", donnees = { "content": md, "id": id, "strict":true }) {
-        const response = await fetch(url, {
-            method: "POST",
-            body: JSON.stringify(donnees),
-        });
-    }
-    postData();
+
+    const response = await fetch("editor", {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({"content": md, "id": id}),
+    }).then(res => {
+        console.log("sauvegardé !");
     });
+});
 
