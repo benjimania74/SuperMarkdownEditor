@@ -33,9 +33,25 @@ function toHighlight(value) {
 }
 
 function toQuote(value) {
-    value = value.slice(2).replaceAll("\n> ", "\n");
-    var quote = document.createElement("pre");
-    textTransformerToParent(quote, value);
+    var firstLine = value.split("\n")[0];
+    value = value.slice(2);
+    var quote = document.createElement("div");
+    
+    quote.style.marginLeft = "15px";
+    quote.style.marginRight = "15px";
+    quote.style.padding = "5px";
+    quote.style.borderRadius = "5px";
+    quote.style.backgroundColor = "gray";
+    quote.style.opactiy = "0.8";
+
+    if(/^\> \!\[[a-zA-Z0-9]*\]*\]$/.test(firstLine) && getQuoteType(firstLine.slice(4, firstLine.length - 1)) != undefined) {
+        getQuoteType( firstLine.slice(4, firstLine.length - 1) ).treat(quote, value.slice(firstLine.length).replaceAll("\n> ", "\n"))
+    } else {
+        var quoteContent = document.createElement("p");
+        textTransformerToParent(quoteContent, value.replaceAll("\n> ", "<br>"));
+        quote.appendChild(quoteContent);
+    }
+
     return quote;
 }
 
@@ -71,22 +87,6 @@ function codeTreatment(value) {
         codePreTag.innerText = value;
     }
     return codePreTag;
-}
-
-function listSelector(lines, startLineNumber) {
-    var lineNumber = 0;
-    
-    var listRegex = /^ *[-*] /;
-
-    while( startLineNumber + lineNumber < lines.length && listRegex.test(lines[startLineNumber + lineNumber]) ) {
-        lineNumber++;
-    }
-
-    return lineNumber;
-}
-
-function listTreatment(value) {
-    // TODO
 }
 
 /*
@@ -185,7 +185,6 @@ addStructure(">", true, toQuote);
 
 // CODE
 addComplexStructure(codeSelector, codeTreatment);
-addComplexStructure(listSelector, listTreatment);
 
 /*
     CODE PARSERS
@@ -202,3 +201,34 @@ function getCodeParser(language) {
 }
 
 // add some parsers I guess ?
+
+/*
+    QUOTES
+    ------------------------------
+*/
+
+const quotesType = {};
+
+function addQuoteType(name, treatFunction) {
+    quotesType[name] = {"treat": treatFunction};
+}
+
+function getQuoteType(name) {
+    return quotesType[name];
+}
+
+addQuoteType("danger", (quoteTag, value) => {
+    quoteTag.style.backgroundColor = "#b3191e";
+
+    var headerTag = document.createElement("p");
+    headerTag.style.fontSize = "large";
+    headerTag.style.color = "#fb464c"
+
+    textTransformerToParent(headerTag, "**❗ Danger**");
+
+    var quoteContent = document.createElement("p");
+    textTransformerToParent(quoteContent, value.replaceAll("\n", "<br>"));
+
+    quoteTag.appendChild(headerTag);
+    quoteTag.appendChild(quoteContent);
+});
