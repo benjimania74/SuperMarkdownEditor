@@ -1,7 +1,7 @@
 <?php
 
-function createProject($conn, $nameProject, $idAuthor, $public) {
-    $sql = "INSERT INTO `project`(`nameProject`, `idAuthor`,`public`) VALUES ('$nameProject', '$idAuthor','$public')";
+function createProject($conn, $nameProject, $idAuthor, bool $public) {
+    $sql = "INSERT INTO `project`(`nameProject`, `idAuthor`,`public`) VALUES ('$nameProject', '$idAuthor','" . ($public == false ? "0" : "1") . "')";
     $ret = mysqli_query($conn, $sql);
     if (!$ret) {
         return "Error: " . mysqli_error($conn);

@@ -12,4 +12,5 @@ $replaceMap = [
 
 $pageContent = getHTMLPage("manageProject.html");
 print replaceMap($pageContent, $replaceMap);
+
 ?>
