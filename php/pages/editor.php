@@ -3,8 +3,10 @@ include __DIR__ . "/../lib/projectManager.php";
 if (isset($_GET["fileID"])) {
     $fileID = $_GET["fileID"];
     $file = selectFile($conn, $fileID);
+} else if (isset($_GET["templates"])) {
+    $file = selectFile($conn, $_GET["templates"]);
 } else {
-    $file = ""; // Valeur par défaut si fileID n'est pas défini
+    $file = "";
 }
 if (isset($_POST["content"]) && ($_POST["id"])) {
     $content = compressEncode($_POST["content"]);
