@@ -27,11 +27,11 @@ function projectView(project) {
     h3.innerHTML = project["nameProject"];
     div.appendChild(h3);
     a.className = "button";
-    a.href = "project?projectId=" + project["id"];
+    a.href = "folder?projectId=" + project["id"];
     a.innerHTML = "Ouvrir";
     div.appendChild(a);
     b.className = "button";
-    b.href = "editProject?projectId=" + project["id"];
+    b.href = "editFolder?projectId=" + project["id"];
     b.innerHTML = "Manage";
     div.appendChild(b);
     return div;

@@ -37,8 +37,8 @@ function selectFile($conn, $id) {
     }
 }
 
-function selectFilesByFolder($conn, $idFolder) {
-    $sql = "SELECT * FROM `file` WHERE `idFolder`=$idFolder";
+function selectFilesByProject($conn, $idProject) {
+    $sql = "SELECT * FROM `file` WHERE `idProject`=$idProject";
     $ret = mysqli_query($conn, $sql);
     if ($ret) {
         return mysqli_fetch_all($ret, MYSQLI_ASSOC);

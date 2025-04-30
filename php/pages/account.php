@@ -9,7 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $updateSuccess = updateUser($conn, $userId, $newPseudo, $user["name"], $user["firstName"], $newMail, $user["pswd"]);
 
     if ($updateSuccess) {
-        // Recharge les informations utilisateur après la mise à jour
         $user = selectUser($conn, $userId);
         echo "<script>alert('Profil mis à jour avec succès');</script>";
     } else {

@@ -1,8 +1,11 @@
-
 <link rel="stylesheet" href="css/account.css">
-<script src="js/front/account.js" defer></script> <!-- update src -->
+<script src="js/front/account.js" defer></script>
 <script>
     const projects = $JSON_PROJECTS$;
+    window.addEventListener("DOMContentLoaded", () => {
+        console.log("Projets reçus :", projects);
+        projectPoster(projects);
+    });
 </script>
 
 <div class="profileContainer">
@@ -18,17 +21,18 @@
             <form id="editProfileForm" method="post" action="./account" style="display: none;">
                 <div class="input">
                     <label for="pseudo">Pseudo :</label>
-                    <input type="text" id="pseudo" name="pseudo"
-                        value="$PSEUDO$" required>
+                    <input type="text" id="pseudo" name="pseudo" value="$PSEUDO$" required>
                 </div>
                 <div class="input">
                     <label for="mail">Email :</label>
-                    <input type="email" id="mail" name="mail" value="$MAIL$"
-                        required>
+                    <input type="email" id="mail" name="mail" value="$MAIL$" required>
                 </div>
                 <input type="submit" value="Enregistrer" class="button">
                 <button type="button" id="cancelEditButton" class="button">Annuler</button>
             </form>
         </div>
     </div>
+    <section class="projectsSection">
+
+    </section>
 </div>

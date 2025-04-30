@@ -15,6 +15,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+function projectPoster(projects) {
+    const section = document.querySelector(".projectsSection");
+    section.innerHTML = "";
+
+    const h2 = document.createElement("h2");
+    h2.textContent = "Mes projets";
+    section.appendChild(h2);
+
+    const projectList = document.createElement("div");
+    
+    for (let i in projects) {
+        projectList.appendChild(projectView(projects[i]));
+    }
+
+
+    section.appendChild(projectList);
+}
+
 function projectView(project) {
     const div = document.createElement("div");
     const h3 = document.createElement("h3");
@@ -26,34 +44,12 @@ function projectView(project) {
     h3.innerHTML = project["nameProject"];
     div.appendChild(h3);
     a.className = "button";
-    a.href = "project?projectId=" + project["id"];
+    a.href = "folder?projectId=" + project["id"];
     a.innerHTML = "Ouvrir";
     div.appendChild(a);
     b.className = "button";
-    b.href = "editProject?projectId=" + project["id"];
+    b.href = "editFolder?projectId=" + project["id"];
     b.innerHTML = "Manage";
     div.appendChild(b);
     return div;
 }
-
-function projectPoster(projects) {
-    const section = document.createElement("section");
-    section.classList.add("projectsSection");
-    const h2 = document.createElement("h2");
-
-    section.className = "projectsSection";
-    h2.innerHTML = "Mes projets";
-    section.appendChild(h2);
-
-    var projectList = document.createElement("div");
-
-    for (let i in projects) {
-        projectList.appendChild(projectView(projects[i]));
-    }
-    section.appendChild(projectList);
-
-    var pc = document.querySelector(".profileContainer");
-    pc.appendChild(section);
-}
-
-projectPoster(projects);
