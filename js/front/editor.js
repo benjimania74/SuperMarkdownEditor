@@ -52,20 +52,33 @@ function updateDOM(md) {
 
 const saveButton = document.getElementById('saveButton');
 
-saveButton.addEventListener('click', function () {
+saveButton.addEventListener('click', async function () {
     const md = textarea.value;
     const id = textarea.id;
-    fetch("editor", {
-        method: "POST",
-        body: JSON.stringify({ "content": md, "id": id, "strict":true })
-    }).then(res => { return res.text() }).then(res => { console.log(res) });
-    /*async function postData(url = "editor", donnees = { "content": md, "id": id, "strict":true }) {
-        const response = await fetch(url, {
-            method: "POST",
-            body: JSON.stringify(donnees),
-        });
-        console.log(response.text());
-    }*/
-    //postData();
-    });
 
+    const response = await fetch("editor", {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({"content": md, "id": id}),
+    }).then(res => {
+        console.log("sauvegardé !");
+    });
+});
+
+function insertScript() {
+    scripts.forEach( script => {
+        var scriptTag = document.createElement("script");
+        scriptTag.id = script["nameFile"];
+        scriptTag.text = script["content"];
+        document.head.appendChild(scriptTag);
+        
+    });
+}
+
+document.addEventListener("readystatechange", () => {
+    insertScript();
+});
+
+//insertScript();

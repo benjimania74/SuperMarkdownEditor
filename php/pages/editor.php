@@ -1,32 +1,38 @@
 <?php
+
 include __DIR__ . "/../lib/projectManager.php";
+
+$scripts = [];
+
 if (isset($_GET["fileID"])) {
     $fileID = $_GET["fileID"];
     $file = selectFile($conn, $fileID);
-} else if (isset($_GET["templates"])) {
-    $file = selectFile($conn, $_GET["templates"]);
+    $scripts = getScripts($conn, $file["idProject"]);
 } else {
-    $file = "";
-}
-if (isset($_POST["content"]) && ($_POST["id"])) {
-    $content = compressEncode($_POST["content"]);
-    $id = $_POST["id"];
-    updateFileContent($conn, $id, $content);
-    echo "bbbo";
-    //exit(0);
+    $file = ""; // Valeur par défaut si fileID n'est pas défini
+    $scripts = [
+        [
+            "nameFile" => "defaultBehavior",
+            "content" => file_get_contents(__DIR__ . "/../../defaultProject/defaultBehavior.js")
+        ]
+    ];
 }
 
-if(isset($_GET["truc"])) {
-    updateFileContent($conn, 6, compressEncode("coucou"));
-    echo "boibboi";
-}
+$postJSON = file_get_contents("php://input");
+$postContent = $postJSON == "" ? [] : json_decode($postJSON, true);
+
+if (isset($postContent["content"]) && ($postContent["id"])) {
+    $content = $postContent["content"];
+    $id = $postContent["id"];
+    updateFile($conn, $id, $content);
+} 
 
 $replaceMap = [
     "FILE_ID" => $_GET["fileID"],
-    "FILE_CONTENT" => $file["content"]
+    "FILE_CONTENT" => decodeDecrompress($file["content"]),
+    "JSON_SCRIPT" => json_encode($scripts)
 ];
 
 $pageContent = getHTMLPage("editor.html");
 echo replaceMap($pageContent, $replaceMap);
-
 ?>

@@ -55,4 +55,14 @@ function selectFilesByProject($conn, $idProject) {
         return "Error: " . mysqli_error($conn);
     }
 }
+
+function selectScriptsByProject($conn, $idProject) {
+    $sql = "SELECT * FROM `file` WHERE `idProject`=$idProject AND `type`='script'";
+    $ret = mysqli_query($conn, $sql);
+    if ($ret) {
+        return mysqli_fetch_all($ret, MYSQLI_ASSOC);
+    } else {
+        return "Error: " . mysqli_error($conn);
+    }
+}
 ?>
