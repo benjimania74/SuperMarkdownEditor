@@ -9,11 +9,11 @@ function folderView(folder){
     h3.innerHTML = folder["nameFolder"];
     div.appendChild(h3);
     a.className = "button";
-    a.href = "files?folderId=" + folder["id"];
+    a.href = "folder?folderId=" + folder["id"];
     a.innerHTML = "Ouvrir";
     div.appendChild(a);
     b.className = "button";
-    b.href = "editfiles?folderId=" + folder["id"];
+    b.href = "editfolder?folderId=" + folder["id"];
     b.innerHTML = "Manage";
     div.appendChild(b);
     return div;
