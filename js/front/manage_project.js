@@ -7,6 +7,7 @@ function projectPoster(projects) {
     section.appendChild(h2);
 
     const projectList = document.createElement("div");
+    projectList.className = "projectList";
     
     for (let i in projects) {
         projectList.appendChild(projectView(projects[i]));
