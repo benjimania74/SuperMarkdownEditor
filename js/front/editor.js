@@ -67,3 +67,18 @@ saveButton.addEventListener('click', async function () {
     });
 });
 
+function insertScript() {
+    scripts.forEach( script => {
+        var scriptTag = document.createElement("script");
+        scriptTag.id = script["nameFile"];
+        scriptTag.text = script["content"];
+        document.head.appendChild(scriptTag);
+        
+    });
+}
+
+document.addEventListener("readystatechange", () => {
+    insertScript();
+});
+
+//insertScript();

@@ -2,11 +2,20 @@
 
 include __DIR__ . "/../lib/projectManager.php";
 
+$scripts = [];
+
 if (isset($_GET["fileID"])) {
     $fileID = $_GET["fileID"];
     $file = selectFile($conn, $fileID);
+    $scripts = getScripts($conn, $file["idProject"]);
 } else {
     $file = ""; // Valeur par défaut si fileID n'est pas défini
+    $scripts = [
+        [
+            "nameFile" => "defaultBehavior",
+            "content" => file_get_contents(__DIR__ . "/../../defaultProject/defaultBehavior.js")
+        ]
+    ];
 }
 
 $postJSON = file_get_contents("php://input");
@@ -20,7 +29,8 @@ if (isset($postContent["content"]) && ($postContent["id"])) {
 
 $replaceMap = [
     "FILE_ID" => $_GET["fileID"],
-    "FILE_CONTENT" => decodeDecrompress($file["content"])
+    "FILE_CONTENT" => decodeDecrompress($file["content"]),
+    "JSON_SCRIPT" => json_encode($scripts)
 ];
 
 $pageContent = getHTMLPage("editor.html");
