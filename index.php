@@ -14,6 +14,16 @@ if (isset($_GET["action"])) {
         unset($_SESSION["admin"]);
     }
 }
+$page = isset($_GET['page']) && $_GET['page'] != "" ? basename($_GET['page']) : 'index';
+echo $page;
+if (isset($_POST["strict"])){
+    include($page);
+    exit(0);
+}
+/*if (str_starts_with($page, "\/request")){
+    include("php/$page");
+    exit(0);
+}*/
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -37,8 +47,6 @@ if (isset($_GET["action"])) {
     include("html/header.html");
     ?>
     <?php
-    $page = isset($_GET['page']) && $_GET['page'] != "" ? basename($_GET['page']) : 'index';
-
     $filepath = "php/pages/" . $page . ".php";
 
     if (file_exists($filepath)) {

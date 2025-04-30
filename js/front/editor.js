@@ -55,15 +55,12 @@ const saveButton = document.getElementById('saveButton');
 saveButton.addEventListener('click', function () {
     const md = textarea.value;
     const id = textarea.id;
-    async function postData(url = "editor.php", donnees = { "content": md, "id": id }) {
+    async function postData(url = "editor", donnees = { "content": md, "id": id, "strict":true }) {
         const response = await fetch(url, {
             method: "POST",
             body: JSON.stringify(donnees),
         });
-        return response.json(); // transforme la réponse JSON reçue en objet JavaScript natif
     }
-    postData.then((donnees) => {
-        console.log(donnees); // Les données JSON analysées par l'appel `donnees.json()`
+    postData();
     });
-});
 
