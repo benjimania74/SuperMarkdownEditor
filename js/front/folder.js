@@ -21,17 +21,48 @@ function filePoster(files) {
 function fileView(file) {
     const div = document.createElement("div");
     const h3 = document.createElement("h3");
-    const a = document.createElement("a");
+    const openButton = document.createElement("a");
+    const deleteButton = document.createElement("button");
 
     div.className = "fileCard";
     div.id = "Fichier_" + file["id"];
     h3.innerHTML = file["nameFile"];
     div.appendChild(h3);
-    a.className = "button";
-    a.href = "editor?fileID=" + file["id"];
-    a.innerHTML = "Ouvrir";
-    a.className = "openButton";
-    div.appendChild(a);
+    // Bouton "Ouvrir"
+    openButton.className = "button openButton";
+    openButton.href = "editor?fileID=" + file["id"];
+    openButton.innerHTML = "Ouvrir";
+    div.appendChild(openButton);
+
+    deleteButton.className = "button deleteButton";
+    deleteButton.innerHTML = "Supprimer";
+    deleteButton.addEventListener("click", () => {
+        if (confirm(`Voulez-vous vraiment supprimer le fichier "${file["nameFile"]}" ?`)) {
+            // Crée un formulaire pour envoyer une requête POST
+            const form = document.createElement("form");
+            form.method = "post";
+            form.action = "./folder?projectId=" + file["idProject"]; // URL pour traiter la suppression
+
+            // Champ caché pour l'ID du fichier
+            const fileIdInput = document.createElement("input");
+            fileIdInput.type = "hidden";
+            fileIdInput.name = "idFile";
+            fileIdInput.value = file["id"];
+            form.appendChild(fileIdInput);
+
+            // Champ caché pour l'action
+            const actionInput = document.createElement("input");
+            actionInput.type = "hidden";
+            actionInput.name = "action";
+            actionInput.value = "delete";
+            form.appendChild(actionInput);
+
+            // Ajoute le formulaire au document et le soumet
+            document.body.appendChild(form);
+            form.submit(); // Soumet le formulaire
+        }
+    });
+    div.appendChild(deleteButton);
     return div;
 }
 

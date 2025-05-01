@@ -6,11 +6,14 @@ if (!isset($userId)) {
     exit;
 }
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nameFile = $_POST["name"];
-    $type = $_POST["type"];
-
-    createFile($conn, $nameFile, $idProject, "", $type);
-
+    if ($_POST["action"] === "delete"){
+        $idFile = $_POST["idFile"];
+        deleteFile($conn, $idFile);
+    } else if ($_POST["action"] === "create"){
+        $nameFile = $_POST["name"];
+        $type = $_POST["type"];
+        createFile($conn, $nameFile, $idProject, "", $type);
+    }
 }
 $files = selectFilesByProject($conn, $idProject) ?? [];
 $replaceMap = [

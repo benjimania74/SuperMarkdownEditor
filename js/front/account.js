@@ -38,7 +38,6 @@ function projectView(project) {
     const div = document.createElement("div");
     const h3 = document.createElement("h3");
     const a = document.createElement("a");
-    const b = document.createElement("a");
 
     div.className = "projectCard";
     div.id = "projet " + project["id"];
@@ -48,9 +47,5 @@ function projectView(project) {
     a.href = "folder?projectId=" + project["id"];
     a.innerHTML = "Ouvrir";
     div.appendChild(a);
-    b.className = "button";
-    b.href = "editFolder?projectId=" + project["id"];
-    b.innerHTML = "Manage";
-    div.appendChild(b);
     return div;
 }

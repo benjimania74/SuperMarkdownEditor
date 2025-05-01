@@ -6,6 +6,13 @@ if (!isset($userId)) {
     header("Location: ./login");
     exit;
 }
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if ($_POST["action"] === "delete"){
+        $idProject = $_POST["idProject"];
+        delProject($conn, $idProject);
+    }
+}
 $projects = getProjectsByUser($conn, $userId) ?? [];
 
 $replaceMap = [
@@ -14,5 +21,4 @@ $replaceMap = [
 
 $pageContent = getHTMLPage("manageProject.html");
 print replaceMap($pageContent, $replaceMap);
-
 ?>
