@@ -27,13 +27,23 @@ h1, h2 {
 .fileCard {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     background: #1e1e3f;
     padding: 1rem 1.5rem;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.4);
     transition: background 0.3s ease;
     margin : 1rem 0;
+}
+
+.fileCard h3 {
+    margin: 0;
+    color: #ffffff;
+    flex-grow: 1;
+}
+
+.fileCard .button {
+    display: flex;
+    gap: 20px;
 }
 
 .fileCard:hover {
@@ -43,7 +53,7 @@ h1, h2 {
 .openButton {
     background: #5c5cff;
     color: white;
-    padding: 0.4rem 0.8rem;
+    padding: 10px 15px;
     text-decoration: none;
     border-radius: 6px;
     transition: background 0.3s ease;
@@ -74,9 +84,74 @@ h1, h2 {
     padding: 10px 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-left: 10px;
 }
 
 .deleteButton:hover {
     background-color: #c0392b;
+}
+
+
+#createfile {
+    background: #1e1e3f;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    max-width: 400px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: #ffffff;
+}
+
+#createfile .input {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#createfile label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#createfile input[type="text"],
+#createfile select {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background: #2a2a5a;
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+}
+
+#createfile input[type="text"]::placeholder {
+    color: #cccccc;
+}
+
+#createfile input[type="submit"],
+#createfile button {
+    background: #5c5cff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#createfile input[type="submit"]:hover,
+#createfile button:hover {
+    background: #7878ff;
+}
+
+#cancelEditButton {
+    background: #e74c3c;
+}
+
+#cancelEditButton:hover {
+    background: #c0392b;
 }
