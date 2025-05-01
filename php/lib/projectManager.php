@@ -1,5 +1,23 @@
 <?php
 
+function getProject(mysqli $conn, int $projectID) {
+    $project = selectProject($conn, $projectID);
+    $project["nameProject"] = decodeDecrompress($project["nameProject"]);
+    return $project;
+}
+
+function getProjectsByUser($conn, int $userID) {
+    $projects = selectProjectsByUser($conn, $userID);
+    for($i = 0 ; $i < count($projects) ; $i++) {
+        $projects[$i]["nameProject"] = decodeDecrompress($projects[$i]["nameProject"]);
+    }
+    return $projects;
+}
+
+function abc() {
+    echo "abc";
+}
+
 function createRawProject(mysqli $conn, int $userID, string $name, bool $isPublic) {
     createProject($conn, $name, $userID, $isPublic);
     return mysqli_insert_id($conn);
@@ -7,7 +25,7 @@ function createRawProject(mysqli $conn, int $userID, string $name, bool $isPubli
 }
 
 function createNewProject(mysqli $conn, int $userID, string $name, bool $isPublic) {
-    $projectID = createRawProject($conn, $userID, $name, $isPublic);
+    $projectID = createRawProject($conn, $userID, compressEncode($name), $isPublic);
 
     $defaultProjectLocation = __DIR__ . "/../../defaultProject/";
 
@@ -40,6 +58,11 @@ function createNewProject(mysqli $conn, int $userID, string $name, bool $isPubli
     );
 
     return $projectID;
+}
+
+function delProject(mysqli $conn, int $projectID) {
+    deleteProject($conn, $projectID);
+    deleteFileByProject($conn, $projectID);
 }
 
 function getProjectFiles(mysqli $conn, int $projectID) {
@@ -81,7 +104,7 @@ function copyTemplate(mysqli $conn, int $templateID, int $userID) {
             $file["content"],
             "txt"
         );
-        
+
         $res = mysqli_insert_id($conn);   
     }
     return $res;
