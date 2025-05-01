@@ -1,4 +1,6 @@
 <?php
+include __DIR__ . "/../lib/projectManager.php";
+
 $userId = $_SESSION["user"];
 $user = selectUser($conn, $userId);
 
@@ -19,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 $replaceMap = [
     "PSEUDO" => $user["pseudo"],
     "MAIL" => $user["mail"],
-    "JSON_PROJECTS" => json_encode(selectProjectsByUser($conn, $userId))
+    "JSON_PROJECTS" => json_encode(getProjectsByUser($conn, $userId))
 ];
 
 $pageContent = getHTMLPage("account.html");
