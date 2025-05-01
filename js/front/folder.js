@@ -34,3 +34,17 @@ function fileView(file) {
     div.appendChild(a);
     return div;
 }
+
+function addProject() {
+    const createFileForm = document.getElementById("createfile");
+    createFileForm.style.display = "block";
+
+    const addProjectButton = document.getElementById("addProject");
+    addProjectButton.style.display = "none";
+
+    const cancelEditButton = document.getElementById("cancelEditButton");
+    cancelEditButton.addEventListener("click", () => {
+        createFileForm.style.display = "none";
+        addProjectButton.style.display = "block";
+    });
+}

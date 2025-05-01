@@ -1,9 +1,25 @@
 <link rel="stylesheet" href="css/folder.css">
 <script src="js/front/folder.js" defer></script>
-
-<section class="filesSection">
-
-</section>
+<div id="files">
+    <section class="filesSection">
+    </section>
+    <img src="./css/img/plus.png" id="addProject" onclick="addProject()">
+</div>
+<form id="createfile" method="post" action="./folder?projectId=$IDPROJECT$" style="display: none;">
+    <div class="input">
+        <label for="name">nom du fichier :</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div class="input">
+        <label for="type">Type :</label>
+        <select id="type" name="type" required>
+            <option value="txt">txt</option>
+            <option value="script">script</option>
+        </select>
+    </div>
+    <input type="submit" value="Enregistrer" class="button">
+    <button type="button" id="cancelEditButton" class="button">Annuler</button>
+</form>
 <script>
     const projects = $JSON_PROJECTS$;
     window.addEventListener("DOMContentLoaded", () => {
