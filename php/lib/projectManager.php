@@ -1,8 +1,13 @@
 <?php
 
-function createNewProject(mysqli $conn, int $userID, string $name, bool $isPublic) {
+function createRawProject(mysqli $conn, int $userID, string $name, bool $isPublic) {
     createProject($conn, $name, $userID, $isPublic);
-    $projectID = mysqli_insert_id($conn);
+    return mysqli_insert_id($conn);
+
+}
+
+function createNewProject(mysqli $conn, int $userID, string $name, bool $isPublic) {
+    $projectID = createRawProject($conn, $userID, $name, $isPublic);
 
     $defaultProjectLocation = __DIR__ . "/../../defaultProject/";
 
@@ -51,6 +56,35 @@ function getScripts(mysqli $conn, int $projectID) {
         $files[$i]["content"] = decodeDecrompress( $files[$i]["content"] );
     }
     return $files;
+}
+
+function copyTemplate(mysqli $conn, int $templateID, int $userID) {
+    $res = -1;
+    $file = selectFile($conn, $templateID);
+    if(gettype($file) != "string" && $file != null && count($file) != 0) {
+        $projectID = createRawProject($conn, $userID, $file["nameFile"], false);
+        $templateScripts = selectScriptsByProject($conn, $file["idProject"]);
+        foreach($templateScripts as $script) {
+            createFile(
+                $conn,
+                $script["nameFile"],
+                $projectID,
+                $script["content"],
+                "script"
+            );
+        }
+
+        createFile(
+            $conn,
+            $file["nameFile"],
+            $projectID,
+            $file["content"],
+            "txt"
+        );
+        
+        $res = mysqli_insert_id($conn);   
+    }
+    return $res;
 }
 
 function updateFile(mysqli $conn, int $fileID, string $content) {
