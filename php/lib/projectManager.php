@@ -14,10 +14,6 @@ function getProjectsByUser($conn, int $userID) {
     return $projects;
 }
 
-function abc() {
-    echo "abc";
-}
-
 function createRawProject(mysqli $conn, int $userID, string $name, bool $isPublic) {
     createProject($conn, compressEncode($name), $userID, $isPublic);
     return mysqli_insert_id($conn);

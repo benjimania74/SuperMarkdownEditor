@@ -9,6 +9,7 @@ textarea.addEventListener('input', function (event) {
 
     // Ajuste la hauteur de la div parent
     editorContainer.style.height = target.scrollHeight + 'px';
+    updateDOM(textarea.value);
 });
 
 const resizer = document.querySelector('.resizer');
