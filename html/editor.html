@@ -1,19 +1,37 @@
-<link rel="stylesheet" href="css/editor.css">
 <script src="js/front/editor.js" defer></script>
 <script src="js/mdInterpreter/tokenizer.js" defer></script>
 <script src="js/mdInterpreter/domizer.js" defer></script>
 <script src="js/mdInterpreter/textTransformer.js" defer></script>
 <script src="js/mdInterpreter/modifiers.js" defer></script>
-<script src="js/mdInterpreter/defaultBehavior.js" defer></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<link rel="stylesheet" href="css/editor.css">
+<script>
+    var scripts = $JSON_SCRIPT$;
+</script>
+<div id="toolbar">
+    <button id="italicButton" class="toolbarButton" title="Italique"><i>I</i></button>
+    <button id="boldButton" class="toolbarButton" title="Gras"><b>B</b></button>
+    <button id="titleButton" class="toolbarButton" title="Titre">H1</button>
+    <button id="saveButton" class="toolbarButton" title="Sauvegarder">💾</button>
+    <button id="downloadButton" class="toolbarButton" title="Télécharger">⬇️</button>
+    <div id="downloadOptions" class="hidden">
+        <button id="downloadPDFButton" class="buttonEditor">Télécharger PDF</button>
+        <button id="downloadHTMLButton" class="buttonEditor">Télécharger HTML</button>
+    </div>
+</div>
 
 <div id="editorContainer">
     <div id="inputcontainer">
-        <textarea class="inputUser" id="$FILE_ID$" placeholder="Écrivez ici votre texte en Markdown...">$FILE_CONTENT$</textarea>
+        <textarea class="inputUser" id="$FILE_ID$"
+            placeholder="Écrivez ici votre texte en Markdown...">$FILE_CONTENT$</textarea>
     </div>
     <div class="resizer"></div>
     <div id="outputMarkdown">
     </div>
 </div>
-
-<button id="convertButton" class="buttonEditor">Convertir</button>
-<button id="saveButton" class="buttonEditor">Sauvegarder</button>
+<div id="buttonContainer">
+    <button id="convertButton" class="buttonEditor">Convertir</button>
+</div>

@@ -74,17 +74,21 @@
 }
 
 .projectCard {
-    background-color: var(--main);
-    border: 1px solid var(--secondary);
     border-radius: 10px;
     padding: 20px;
     width: 300px;
     text-align: center;
+    background: #1e1e3f;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+    transition: background 0.3s ease;
+}
+
+.projectCard:hover {
+    background: #2a2a5a;
 }
 
 .projectCard h3 {
     font-size: 1.5em;
-    margin-bottom: 10px;
 }
 
 .projectCard p {
@@ -92,16 +96,18 @@
     margin-bottom: 15px;
 }
 
+
 .projectCard .button {
-    padding: 8px 15px;
-    font-size: 0.9em;
-    background-color: var(--mainHeader);
+    gap: 5px;
+    background: #5c5cff;
     color: white;
+    padding: 0.4rem 0.8rem;
     text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+    margin-right: 10px;
 }
 
 .projectCard .button:hover {
-    background-color: var(--tertiary);
+    background: #7878ff;
 }

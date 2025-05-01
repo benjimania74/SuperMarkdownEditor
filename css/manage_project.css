@@ -1,53 +1,56 @@
-#projectListContainer {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
+/* Section des projets */
+.projectsSection {
+    margin-top: 20px;
 }
 
-#projectList {
-    list-style: none;
-    padding: 0;
+.projectsSection h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
 }
 
-.project-item {
+.projectList {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.project-name {
-    font-weight: bold;
+.projectCard {
+    background: #1e1e3f;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+    transition: background 0.3s ease;
 }
 
-.open-button, .edit-button {
-    padding: 5px 10px;
-    font-size: 0.9em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.projectCard:hover {
+    background: #2a2a5a;
 }
 
-.open-button {
-    background-color: var(--tertiary);
+.projectCard h3 {
+    font-size: 1.5em;
+}
+
+.projectCard p {
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+.projectCard .button {
+    gap: 5px;
+    background: #5c5cff;
     color: white;
+    padding: 0.4rem 0.8rem;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+    margin-right: 10px;
 }
 
-.open-button:hover {
-    background-color: var(--secondary);
-}
-
-.edit-button {
-    background-color: var(--mainHeader);
-    color: white;
-}
-
-.edit-button:hover {
-    background-color: var(--secondary);
+.projectCard .button:hover {
+    background: #7878ff;
 }
