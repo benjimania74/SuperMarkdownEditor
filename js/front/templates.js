@@ -26,16 +26,14 @@ function fileView(file) {
 
     const content = getDOM(file["content"]);
     if (content instanceof HTMLElement) {
-        // If getDOM returns a DOM element, append it directly
         div2.appendChild(content);
     } else {
-        // Otherwise, assume it's a string and set it as innerHTML
         div2.innerHTML = content;
     }
     div.appendChild(div2);
     
     a.className = "button";
-    a.href = "editor?templates=" + file["id"];
+    a.href = "editor?template=" + file["id"];
     a.innerHTML = "Ouvrir";
     div.appendChild(a);
     return div;
