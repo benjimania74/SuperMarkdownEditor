@@ -2,15 +2,17 @@ const textarea = document.querySelector('.inputUser');
 const editorContainer = document.getElementById('editorContainer');
 
 textarea.addEventListener('input', function (event) {
-    const target = event.target;
-
-    target.style.height = 'auto'; // Réinitialise la hauteur du textarea
-    target.style.height = target.scrollHeight + 'px'; // Ajuste à la hauteur du contenu
-
-    // Ajuste la hauteur de la div parent
-    editorContainer.style.height = target.scrollHeight + 'px';
+    resizeTextarea();
     updateDOM(textarea.value);
 });
+
+function resizeTextarea() {
+    textarea.style.height = 'auto'; // Réinitialise la hauteur du textarea
+    textarea.style.height = textarea.scrollHeight + 'px'; // Ajuste à la hauteur du contenu
+
+    // Ajuste la hauteur de la div parent
+    editorContainer.style.height = textarea.scrollHeight + 'px';
+}
 
 const resizer = document.querySelector('.resizer');
 const inputContainer = document.getElementById('inputcontainer');
@@ -74,6 +76,8 @@ function insertScript() {
 
 document.addEventListener("readystatechange", () => {
     insertScript();
+    resizeTextarea();
+    updateDOM(textarea.value);
 });
 
 
