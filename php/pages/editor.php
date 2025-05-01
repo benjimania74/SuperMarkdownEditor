@@ -18,8 +18,8 @@ if(isset($_GET["fileID"])) {
     } else {
         header("Location: editor");
     }
-} else if(isset($_GET["templates"])) {
-    $templateID = intval($_GET["templates"]);
+} else if(isset($_GET["template"])) {
+    $templateID = intval($_GET["template"]);
     if($userID != -1) {
         $fileID = copyTemplate($conn, $templateID, $userID);
         header("Location: editor?fileID=$fileID");
