@@ -149,7 +149,7 @@ addSingleTag(/^\[[^\[\]\(\)]{1,}\]\([^\[\]\(\)]{1,}\)$/, (tag) => {
 // IMAGES
 addSingleTag(/^\!\[[^\[\]\(\)]{1,}\]\([^\[\]\(\)]{1,}\)$/, (tag) => {
     var alternativText = tag.slice(2, tag.indexOf("]"));
-    var image = tag.slice(tag.indexOf("(") + 1, tag.length);
+    var image = tag.slice(tag.indexOf("(") + 1, tag.length - 1);
 
     var img = document.createElement("img");
 
