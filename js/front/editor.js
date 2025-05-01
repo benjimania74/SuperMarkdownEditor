@@ -81,12 +81,6 @@ document.addEventListener("readystatechange", () => {
 });
 
 
-const converter = document.getElementById('convertButton');
-
-converter.addEventListener('click', function () {
-    updateDOM(textarea.value);
-});
-
 const downloadButton = document.getElementById("downloadButton");
 const downloadOptions = document.getElementById("downloadOptions");
 const downloadPDFButton = document.getElementById("downloadPDFButton");
