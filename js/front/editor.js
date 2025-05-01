@@ -2,10 +2,28 @@ const textarea = document.querySelector('.inputUser');
 const editorContainer = document.getElementById('editorContainer');
 
 textarea.addEventListener('input', function (event) {
+    const textarea = document.querySelector(".inputUser");
     resizeTextarea();
     updateDOM(textarea.value);
-});
 
+    // Détecte les modifications dans la textarea
+    textarea.addEventListener("input", () => {
+        const content = textarea.value;
+
+        // Envoie le contenu au serveur via fetch
+        fetch("./editor", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                action: "saveToSession",
+                content: content,
+            }),
+        })
+            .then(response => response.json())
+    });
+});
 function resizeTextarea() {
     textarea.style.height = 'auto'; // Réinitialise la hauteur du textarea
     textarea.style.height = textarea.scrollHeight + 'px'; // Ajuste à la hauteur du contenu
