@@ -30,6 +30,7 @@ function fileView(file) {
     a.className = "button";
     a.href = "editor?fileID=" + file["id"];
     a.innerHTML = "Ouvrir";
+    a.className = "openButton";
     div.appendChild(a);
     return div;
 }
