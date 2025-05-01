@@ -82,9 +82,14 @@ converter.addEventListener('click', function () {
     updateDOM(textarea.value);
 });
 
-
+const downloadButton = document.getElementById("downloadButton");
+const downloadOptions = document.getElementById("downloadOptions");
 const downloadPDFButton = document.getElementById("downloadPDFButton");
 const downloadHTMLButton = document.getElementById("downloadHTMLButton");
+
+downloadButton.addEventListener("click", () => {
+    downloadOptions.classList.toggle("hidden");
+});
 
 downloadPDFButton.addEventListener("click", () => {
     updateDOM(textarea.value);
@@ -98,6 +103,7 @@ downloadPDFButton.addEventListener("click", () => {
         x: 10,
         y: 10
     });
+    downloadOptions.classList.add("hidden");
 });
 
 downloadHTMLButton.addEventListener("click", () => {
@@ -112,6 +118,13 @@ downloadHTMLButton.addEventListener("click", () => {
     a.click();
 
     URL.revokeObjectURL(url);
+    downloadOptions.classList.add("hidden");
+});
+
+document.addEventListener("click", (event) => {
+    if (!downloadButton.contains(event.target) && !downloadOptions.contains(event.target)) {
+        downloadOptions.classList.add("hidden");
+    }
 });
 
 // Bouton Italique

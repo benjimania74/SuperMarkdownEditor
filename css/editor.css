@@ -72,3 +72,69 @@
     box-sizing: border-box;
 }
 
+
+#toolbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: var(--mainHeader);
+    border-bottom: 1px solid var(--secondary);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.toolbarButton {
+    background-color: var(--tertiary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toolbarButton:hover {
+    background-color: var(--secondary);
+}
+
+.toolbarButton i, .toolbarButton b {
+    font-style: normal;
+    font-weight: normal;
+}
+
+#downloadOptions {
+    position: absolute;
+    top: 50px; /* Ajustez selon la position du bouton */
+    left: 50%; /* Centré horizontalement */
+    transform: translateX(-50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+#downloadOptions.hidden {
+    display: none;
+}
+
+#downloadOptions .buttonEditor {
+    padding: 10px 15px;
+    font-size: 1em;
+    background-color: var(--tertiary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#downloadOptions .buttonEditor:hover {
+    background-color: var(--secondary);
+}
