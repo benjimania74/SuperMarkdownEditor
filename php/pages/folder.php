@@ -5,8 +5,16 @@ if (!isset($userId)) {
     header("Location: ./login");
     exit;
 }
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $nameFile = $_POST["name"];
+    $type = $_POST["type"];
+
+    createFile($conn, $nameFile, $idProject, "", $type);
+
+}
 $files = selectFilesByProject($conn, $idProject) ?? [];
 $replaceMap = [
+    "IDPROJECT" => $idProject,
     "JSON_PROJECTS" => json_encode($files)
 ];
 
