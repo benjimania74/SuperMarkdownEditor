@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-.buttonEditor{
+.buttonEditor {
     display: block;
     margin: 1rem auto;
     background-color: var(--tertiary);
@@ -27,19 +27,20 @@
 #editorContainer {
     display: flex;
     width: 100%;
-    margin: 1%;
+    margin-top: 1%;
     box-sizing: border-box;
     flex-direction: row;
 }
 
 #inputcontainer,
 #outputMarkdown {
-    flex: 1;;
+    flex: 1;
+    ;
     box-sizing: border-box;
     overflow: auto;
     min-height: 400px;
     border-radius: 10px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
     margin: 0.5rem;
 }
 
@@ -57,7 +58,7 @@
     resize: none;
     width: 100%;
     overflow: hidden;
-    background-color:#f1f1f1;
+    background-color: #f1f1f1;
     flex: 1;
     box-sizing: border-box;
 }
@@ -69,35 +70,49 @@
     align-items: center;
     gap: 10px;
     padding: 10px;
-    background-color: var(--mainHeader);
-    border-bottom: 1px solid var(--secondary);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #2B2A3F;
+    border-bottom: 2px solid #444;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
 .toolbarButton {
-    background-color: var(--tertiary);
+    background-color: #5c5cff;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     padding: 10px 15px;
     font-size: 1em;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .toolbarButton:hover {
-    background-color: var(--secondary);
+    background-color: #7878ff;
+    transform: scale(1.05);
 }
 
-.toolbarButton i, .toolbarButton b {
+.toolbarButton i,
+.toolbarButton b {
     font-style: normal;
     font-weight: normal;
 }
 
+.toolbarButton:active {
+    transform: scale(0.95);
+    /* Effet de clic */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    /* Réduction de l'ombre au clic */
+}
+
 #downloadOptions {
     position: absolute;
-    top: 50px; /* Ajustez selon la position du bouton */
-    left: 50%; /* Centré horizontalement */
+    top: 50px;
+    /* Ajustez selon la position du bouton */
+    left: 50%;
+    /* Centré horizontalement */
     transform: translateX(-50%);
     background-color: white;
     border: 1px solid #ccc;
