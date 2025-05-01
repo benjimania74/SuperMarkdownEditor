@@ -12,6 +12,13 @@
 var scripts = $JSON_SCRIPT$;
 </script>
 <!-- <script src="js/mdInterpreter/defaultBehavior.js" defer></script> -->
+<div id="toolbar">
+    <button id="italicButton" class="toolbarButton" title="Italique"><i>I</i></button>
+    <button id="boldButton" class="toolbarButton" title="Gras"><b>B</b></button>
+    <button id="titleButton" class="toolbarButton" title="Titre">H1</button>
+    <button id="saveButton" class="toolbarButton" title="Sauvegarder">💾</button>
+    <button id="downloadButton" class="toolbarButton" title="Télécharger">⬇️</button>
+</div>
 
 <div id="editorContainer">
     <div id="inputcontainer">
@@ -24,7 +31,6 @@ var scripts = $JSON_SCRIPT$;
 </div>
 <div id="buttonContainer">
     <button id="convertButton" class="buttonEditor">Convertir</button>
-    <button id="saveButton" class="buttonEditor">Sauvegarder</button>
     <button id="downloadPDFButton" class="buttonEditor">Télécharger PDF</button>
     <button id="downloadHTMLButton" class="buttonEditor">Télécharger HTML</button>
 </div>

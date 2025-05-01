@@ -38,12 +38,6 @@ resizer.addEventListener('mousedown', (e) => {
     document.addEventListener('mouseup', onMouseUp);
 });
 
-const converter = document.getElementById('convertButton');
-
-converter.addEventListener('click', function () {
-    updateDOM(textarea.value);
-});
-
 function updateDOM(md) {
     const outputDOM = getDOM(md);
     outputMarkdown.innerHTML = '';
@@ -61,25 +55,33 @@ saveButton.addEventListener('click', async function () {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({"content": md, "id": id}),
+        body: JSON.stringify({ "content": md, "id": id }),
     }).then(res => {
         console.log("sauvegardé !");
     });
 });
 
 function insertScript() {
-    scripts.forEach( script => {
+    scripts.forEach(script => {
         var scriptTag = document.createElement("script");
         scriptTag.id = script["nameFile"];
         scriptTag.text = script["content"];
         document.head.appendChild(scriptTag);
-        
+
     });
 }
 
 document.addEventListener("readystatechange", () => {
     insertScript();
 });
+
+
+const converter = document.getElementById('convertButton');
+
+converter.addEventListener('click', function () {
+    updateDOM(textarea.value);
+});
+
 
 const downloadPDFButton = document.getElementById("downloadPDFButton");
 const downloadHTMLButton = document.getElementById("downloadHTMLButton");
@@ -91,11 +93,11 @@ downloadPDFButton.addEventListener("click", () => {
 
     doc.html(outputMarkdown.firstChild, {
         callback: function (doc) {
-          doc.save("markdown.pdf");
+            doc.save("markdown.pdf");
         },
         x: 10,
         y: 10
-      });
+    });
 });
 
 downloadHTMLButton.addEventListener("click", () => {
@@ -111,3 +113,40 @@ downloadHTMLButton.addEventListener("click", () => {
 
     URL.revokeObjectURL(url);
 });
+
+// Bouton Italique
+const Italique = document.getElementById("italicButton")
+Italique.addEventListener("click", () => {
+    insertMarkdownSyntax(textarea, "*", "*");
+});
+
+// Bouton Gras
+const Gras = document.getElementById("boldButton")
+Gras.addEventListener("click", () => {
+    insertMarkdownSyntax(textarea, "**", "**");
+});
+
+// Bouton Titre
+const Titre = document.getElementById("titleButton")
+Titre.addEventListener("click", () => {
+    insertMarkdownSyntax(textarea, "# ", "");
+});
+
+// Fonction pour insérer du Markdown
+function insertMarkdownSyntax(textarea, prefix, suffix) {
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const text = textarea.value;
+
+    // Insère le préfixe et le suffixe autour du texte sélectionné
+    textarea.value =
+        text.substring(0, start) +
+        prefix +
+        text.substring(start, end) +
+        suffix +
+        text.substring(end);
+
+    // Replace le curseur après le suffixe
+    textarea.focus();
+    textarea.selectionStart = textarea.selectionEnd = end + prefix.length + suffix.length;
+}
