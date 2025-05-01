@@ -19,13 +19,13 @@ function abc() {
 }
 
 function createRawProject(mysqli $conn, int $userID, string $name, bool $isPublic) {
-    createProject($conn, $name, $userID, $isPublic);
+    createProject($conn, compressEncode($name), $userID, $isPublic);
     return mysqli_insert_id($conn);
 
 }
 
 function createNewProject(mysqli $conn, int $userID, string $name, bool $isPublic) {
-    $projectID = createRawProject($conn, $userID, compressEncode($name), $isPublic);
+    $projectID = createRawProject($conn, $userID, $name, $isPublic);
 
     $defaultProjectLocation = __DIR__ . "/../../defaultProject/";
 
