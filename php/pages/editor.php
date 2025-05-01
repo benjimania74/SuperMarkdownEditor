@@ -8,6 +8,9 @@ if (isset($_GET["fileID"])) {
     $fileID = $_GET["fileID"];
     $file = selectFile($conn, $fileID);
     $scripts = getScripts($conn, $file["idProject"]);
+}else if (isset($_GET["template"])) {
+    $file = selectFile($conn, $_GET["template"]);
+    $scripts = getScripts($conn, $_GET["template"]);
 } else {
     $file = ""; // Valeur par défaut si fileID n'est pas défini
     $scripts = [
