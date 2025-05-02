@@ -7,22 +7,19 @@ textarea.addEventListener('input', function (event) {
     updateDOM(textarea.value);
 
     // Détecte les modifications dans la textarea
-    textarea.addEventListener("input", () => {
-        const content = textarea.value;
+    const content = textarea.value;
 
-        // Envoie le contenu au serveur via fetch
-        fetch("./editor", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                action: "saveToSession",
-                content: content,
-            }),
-        })
-            .then(response => response.json())
-    });
+    // Envoie le contenu au serveur via fetch
+    fetch("./editor", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            action: "saveToSession",
+            content: content,
+        }),
+    })
 });
 function resizeTextarea() {
     textarea.style.height = 'auto'; // Réinitialise la hauteur du textarea
